@@ -1,0 +1,38 @@
+.main {
+    padding: 0 10% 0 10%;
+    display: flex;
+    justify-content: center;
+    &__article {
+        &__card {
+            background-color: white;
+            display: flex;
+            gap: 5px;
+            width: 800px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            transition: all 0.2s linear;
+            &:hover {
+                transform: scale(1.02);
+            }
+            &__img {
+                object-fit: cover;
+                width: 180px;
+                height: 180px;
+                margin: 2%;
+                border-radius: 25px;
+                border: solid 2px #261624;
+            }
+            &__infos {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                &__name {
+                    font-weight: bold;
+                }
+                &__price {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

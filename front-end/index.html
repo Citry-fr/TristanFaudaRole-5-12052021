@@ -11,11 +11,20 @@
         <title>Orinoco</title>
     </head>
     <body>
-        <article id="prodCards" class="article"></article>
+        <main class="main">
+            <article id="prodCards" class="main__article">
+                <h2>Produits :</h2>
+            </article>
+        </main>
+
         <template id="prodTemplate">
-            <div class="article__card">
-                <img src="" alt="" class="article__card__img" />
-                <p class="article__card__prodName"></p>
+            <div class="main__article__card">
+                <img src="" alt="" class="main__article__card__img" />
+                <div class="main__article__card__infos">
+                    <h3 class="main__article__card__infos__name"></h3>
+                    <p class="main__article__card__infos__desc"></p>
+                    <p class="main__article__card__infos__price"></p>
+                </div>
             </div>
         </template>
     </body>

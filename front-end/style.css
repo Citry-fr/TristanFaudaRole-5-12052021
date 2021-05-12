@@ -1,3 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+.main {
+  padding: 0 10% 0 10%;
+  display: flex;
+  justify-content: center;
+}
+.main__article__card {
+  background-color: white;
+  display: flex;
+  gap: 5px;
+  width: 800px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+  transition: all 0.2s linear;
+}
+.main__article__card:hover {
+  transform: scale(1.02);
+}
+.main__article__card__img {
+  object-fit: cover;
+  width: 180px;
+  height: 180px;
+  margin: 2%;
+  border-radius: 25px;
+  border: solid 2px #261624;
+}
+.main__article__card__infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main__article__card__infos__name {
+  font-weight: bold;
+}
+.main__article__card__infos__price {
+  font-weight: bold;
+}
 
+body {
+  background-color: #f3e9f1;
+  font-family: "Nunito", sans-serif;
+  color: #261624;
+}
 
 /*# sourceMappingURL=style.css.map */

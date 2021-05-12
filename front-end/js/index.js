@@ -21,11 +21,25 @@ function useTemplate(element) {
     //Récuperation du template
     var template = document.querySelector("#prodTemplate");
 
-    //Source pour l'image
-    template.content.querySelector("img").src = element.imageUrl;
+    //Source et alt pour l'image
+    var img = template.content.querySelector("img");
+    img.src = element.imageUrl;
+    img.alt = "Photo de " + element.name;
 
     //Nom du produit
-    template.content.querySelector("p").textContent = element.name;
+    template.content.querySelector(
+        ".main__article__card__infos__name"
+    ).textContent = element.name;
+
+    //Description produit
+    template.content.querySelector(
+        ".main__article__card__infos__desc"
+    ).textContent = element.description;
+
+    //Prix produit
+    template.content.querySelector(
+        ".main__article__card__infos__price"
+    ).textContent = "Prix : " + element.price + " €";
 
     var clone = document.importNode(template.content, true);
     document.getElementById("prodCards").appendChild(clone);
