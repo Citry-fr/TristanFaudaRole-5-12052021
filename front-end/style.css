@@ -45,8 +45,7 @@ body {
   background-color: #f3e9f1;
   display: flex;
   justify-content: space-between;
-  border: solid 2px #261624;
-  border-radius: 15px;
+  border-bottom: solid 2px #261624;
 }
 .header__logo {
   object-fit: cover;
@@ -66,6 +65,14 @@ body {
   text-decoration: none;
   color: #261624;
   width: 100%;
+}
+.header__nav__list__a#home {
+  border-right: #261624 1px solid;
+  border-radius: 15px;
+}
+.header__nav__list__a#cart {
+  border-left: #261624 1px solid;
+  border-radius: 15px;
 }
 .header__nav__list__a__element {
   display: flex;

@@ -2,8 +2,7 @@
     background-color: #f3e9f1;
     display: flex;
     justify-content: space-between;
-    border: solid 2px #261624;
-    border-radius: 15px;
+    border-bottom: solid 2px #261624;
     &__logo {
         object-fit: cover;
         width: 300px;
@@ -22,6 +21,15 @@
                 text-decoration: none;
                 color: #261624;
                 width: 100%;
+                &#home {
+                    border-right: #261624 1px solid;
+                    border-radius: 15px;
+                }
+                &#cart {
+                    border-left: #261624 1px solid;
+                    border-radius: 15px;
+                }
+
                 &__element {
                     display: flex;
                     flex-direction: column;
