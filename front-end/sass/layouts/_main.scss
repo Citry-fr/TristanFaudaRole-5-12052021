@@ -8,5 +8,13 @@
         font-size: 1.2em;
         text-align: center;
         margin-bottom: 100px;
+        @include mobile {
+            margin-bottom: 50px;
+        }
+    }
+    &__produit {
+        @include mobile {
+            margin-left: 10px;
+        }
     }
 }
