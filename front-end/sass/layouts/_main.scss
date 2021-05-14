@@ -1,0 +1,11 @@
+.main {
+    &__greetings {
+        text-align: center;
+        margin: 40px 0 40px 0;
+    }
+    &__description {
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+}

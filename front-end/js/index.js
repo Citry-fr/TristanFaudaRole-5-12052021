@@ -34,16 +34,6 @@ function useTemplate(element) {
         ".main__article__card__infos__name"
     ).textContent = element.name;
 
-    //Description produit
-    template.content.querySelector(
-        ".main__article__card__infos__desc"
-    ).textContent = element.description;
-
-    //Prix produit
-    template.content.querySelector(
-        ".main__article__card__infos__price"
-    ).textContent = "Prix : " + element.price + " €";
-
     var clone = document.importNode(template.content, true);
     document.getElementById("prodCards").appendChild(clone);
 }

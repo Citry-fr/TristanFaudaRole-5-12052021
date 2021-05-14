@@ -1,16 +1,20 @@
 .main {
-    padding: 0 10% 0 10%;
-    display: flex;
-    justify-content: center;
     &__article {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
         &__card {
             background-color: white;
             display: flex;
-            gap: 5px;
-            width: 800px;
-            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 6px;
+            width: 180px;
+            height: 220px;
+            margin-bottom: 0 0 10px 0;
             border-radius: 25px;
             transition: all 0.2s linear;
+            border: solid 2px #261624;
             &:hover {
                 transform: scale(1.02);
             }
@@ -18,19 +22,15 @@
                 object-fit: cover;
                 width: 180px;
                 height: 180px;
-                margin: 2%;
-                border-radius: 25px;
-                border: solid 2px #261624;
+                border-radius: 25px 25px 0 0;
+                border-bottom: solid 1px #261624;
             }
             &__infos {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
                 &__name {
                     font-weight: bold;
-                }
-                &__price {
-                    font-weight: bold;
+                    margin: 0;
+                    text-align: center;
+                    height: 100%;
                 }
             }
         }
