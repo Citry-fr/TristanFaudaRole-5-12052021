@@ -1,3 +1,4 @@
+//Récuperation de l'api
 fetch("http://localhost:3000/api/teddies")
     .then(function (result) {
         if (result.ok) {
@@ -11,12 +12,14 @@ fetch("http://localhost:3000/api/teddies")
         console.log(error);
     });
 
+//Fuction utilisation de l'api
 function showProduit(response) {
     for (const i in response) {
         useTemplate(response[i]);
     }
 }
 
+//Fonction remplissage template
 function useTemplate(element) {
     //Récuperation du template
     var template = document.querySelector("#prodTemplate");
