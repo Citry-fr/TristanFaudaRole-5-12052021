@@ -93,6 +93,9 @@ body {
   color: #261624;
 }
 
+.main {
+  margin-bottom: 50px;
+}
 .main__greetings {
   text-align: center;
   margin: 40px 0 40px 0;
@@ -101,6 +104,14 @@ body {
   font-size: 1.2em;
   text-align: center;
   margin-bottom: 100px;
+}
+
+.footer {
+  border-top: 2px solid #261624;
+}
+.footer__wait {
+  font-size: 1.2em;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
