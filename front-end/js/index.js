@@ -34,9 +34,11 @@ function useTemplate(element) {
         ".main__article__anchor__card__infos__name"
     ).textContent = element.name;
 
+    //Ajout de l'id du produit dans l'href du lien
     template.content.querySelector(".main__article__anchor").href =
         "./produit.html?id=" + element._id;
 
+    //Ajout du template remplis dans le html
     var clone = document.importNode(template.content, true);
     document.getElementById("prodCards").appendChild(clone);
 }

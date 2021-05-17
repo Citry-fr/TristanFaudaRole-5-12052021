@@ -168,6 +168,40 @@ body {
   justify-content: space-between;
   padding-right: 10px;
 }
+.main__prod__infos__desc {
+  margin: 10px 0 0 0;
+}
+.main__prod__infos__perso__title {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+}
+.main__prod__infos__perso__liste {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+.main__prod__infos__perso__liste__element {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.main__prod__infos__perso__liste__element__check {
+  display: none;
+}
+.main__prod__infos__perso__liste__element__label {
+  cursor: pointer;
+}
+.main__prod__infos__perso__liste__element__check:checked + .main__prod__infos__perso__liste__element__label {
+  border-top: 2px solid #261624;
+  border-bottom: 2px solid #261624;
+  border-radius: 10px;
+}
 .main__prod__infos__pb {
   display: flex;
   justify-content: space-between;

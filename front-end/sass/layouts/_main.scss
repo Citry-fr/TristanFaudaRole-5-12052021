@@ -37,6 +37,42 @@
             flex-direction: column;
             justify-content: space-between;
             padding-right: 10px;
+            &__desc {
+                margin: 10px 0 0 0;
+            }
+            &__perso {
+                &__title {
+                    display: flex;
+                    justify-content: center;
+                    margin: 0 0 10px 0;
+                    font-size: 1.3em;
+                }
+                &__liste {
+                    list-style: none;
+                    display: flex;
+                    justify-content: space-evenly;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    margin: 0;
+                    padding: 0;
+                    &__element {
+                        display: inline-block;
+                        margin: 0;
+                        padding: 0;
+                        &__check {
+                            display: none;
+                        }
+                        &__label {
+                            cursor: pointer;
+                        }
+                        &__check:checked + &__label {
+                            border-top: 2px solid map-get($color, secondary);
+                            border-bottom: 2px solid map-get($color, secondary);
+                            border-radius: 10px;
+                        }
+                    }
+                }
+            }
             &__pb {
                 display: flex;
                 justify-content: space-between;
