@@ -1,3 +1,5 @@
+let url = "http://localhost:3000/api/teddies";
+
 //Récuperation de l'api
 fetch("http://localhost:3000/api/teddies")
     .then(function (result) {
@@ -7,17 +9,19 @@ fetch("http://localhost:3000/api/teddies")
     })
     .then(function (prod) {
         showProduit(prod);
-        const test = Promise.resolve(prod[0]._id);
-        test.then((value) => {
-            console.log("id : " + value);
-        });
-        module.exports = { test };
+        const elt = document.getElementsByClassName("main__article__anchor");
+        for (const anchor in elt) {
+            elt[anchor].addEventListener("click", function (event) {
+                url = url + "/" + prod[anchor]._id;
+                sessionStorage.setItem("urlProd", url);
+            });
+        }
     })
     .catch(function (error) {
         console.log(error);
     });
 
-//Fuction utilisation de l'api
+//Fonction utilisation de l'api
 function showProduit(response) {
     for (const i in response) {
         useTemplate(response[i]);

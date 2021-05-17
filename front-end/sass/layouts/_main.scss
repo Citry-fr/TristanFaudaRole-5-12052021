@@ -1,6 +1,6 @@
 .main {
     margin-bottom: 50px;
-    &__greetings {
+    &__title {
         text-align: center;
         margin: 40px 0 40px 0;
     }
@@ -12,9 +12,30 @@
             margin-bottom: 50px;
         }
     }
-    &__produit {
+    &__product {
         @include mobile {
             margin-left: 10px;
+        }
+    }
+    &__prod {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        background-color: map-get($color, tertiary);
+        border: solid 2px map-get($color, secondary);
+        border-radius: 25px;
+        &__img {
+            width: 500px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 25px 0 0 25px;
+            border-right: solid 2px map-get($color, secondary);
+        }
+        &__infos {
+            font-size: 1.5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 }

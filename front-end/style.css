@@ -127,7 +127,7 @@ body {
 .main {
   margin-bottom: 50px;
 }
-.main__greetings {
+.main__title {
   text-align: center;
   margin: 40px 0 40px 0;
 }
@@ -142,9 +142,30 @@ body {
   }
 }
 @media all and (max-width: 767px) {
-  .main__produit {
+  .main__product {
     margin-left: 10px;
   }
+}
+.main__prod {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #e1c8dc;
+  border: solid 2px #261624;
+  border-radius: 25px;
+}
+.main__prod__img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 25px 0 0 25px;
+  border-right: solid 2px #261624;
+}
+.main__prod__infos {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .footer {
