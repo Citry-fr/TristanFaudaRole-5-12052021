@@ -8,33 +8,38 @@
             flex-direction: column;
             align-items: center;
         }
-        &__card {
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            width: 180px;
-            height: 220px;
-            margin-bottom: 0 0 10px 0;
-            border-radius: 25px;
-            transition: all 0.2s linear;
-            border: solid 2px #261624;
-            &:hover {
-                transform: scale(1.02);
-            }
-            &__img {
-                object-fit: cover;
+
+        &__anchor {
+            text-decoration: none;
+            color: map-get($color, secondary);
+            &__card {
+                background-color: map-get($color, backgroundW);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
                 width: 180px;
-                height: 180px;
-                border-radius: 25px 25px 0 0;
-                border-bottom: solid 1px #261624;
-            }
-            &__infos {
-                &__name {
-                    font-weight: bold;
-                    margin: 0;
-                    text-align: center;
-                    height: 100%;
+                height: 220px;
+                margin-bottom: 0 0 10px 0;
+                border-radius: 25px;
+                transition: all 0.2s linear;
+                border: solid 2px map-get($color, secondary);
+                &:hover {
+                    transform: scale(1.02);
+                }
+                &__img {
+                    object-fit: cover;
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 25px 25px 0 0;
+                    border-bottom: solid 1px map-get($color, secondary);
+                }
+                &__infos {
+                    &__name {
+                        font-weight: bold;
+                        margin: 0;
+                        text-align: center;
+                        height: 100%;
+                    }
                 }
             }
         }

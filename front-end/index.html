@@ -57,6 +57,7 @@
             </nav>
         </header>
 
+        <!-- Affichage produit -->
         <main class="main">
             <h1 class="main__greetings">Bienvenue sur la boutique Orinoco.</h1>
             <p class="main__description">
@@ -66,18 +67,27 @@
             <article id="prodCards" class="main__article"></article>
         </main>
 
+        <!-- Footer -->
         <footer class="footer">
             <p class="footer__wait">Footer en construction</p>
         </footer>
 
         <!-- Template pour l'affichage des produits -->
         <template id="prodTemplate">
-            <div class="main__article__card">
-                <img src="" alt="" class="main__article__card__img" />
-                <div class="main__article__card__infos">
-                    <h3 class="main__article__card__infos__name"></h3>
+            <a href="./produit.html" class="main__article__anchor">
+                <div class="main__article__anchor__card">
+                    <img
+                        src=""
+                        alt=""
+                        class="main__article__anchor__card__img"
+                    />
+                    <div class="main__article__anchor__card__infos">
+                        <h3
+                            class="main__article__anchor__card__infos__name"
+                        ></h3>
+                    </div>
                 </div>
-            </div>
+            </a>
         </template>
     </body>
 </html>

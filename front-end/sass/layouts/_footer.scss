@@ -1,5 +1,5 @@
 .footer {
-    border-top: 2px solid #261624;
+    border-top: 2px solid map-get($color, secondary);
     &__wait {
         font-size: 1.2em;
         text-align: center;

@@ -7,6 +7,11 @@ fetch("http://localhost:3000/api/teddies")
     })
     .then(function (prod) {
         showProduit(prod);
+        const test = Promise.resolve(prod[0]._id);
+        test.then((value) => {
+            console.log("id : " + value);
+        });
+        module.exports = { test };
     })
     .catch(function (error) {
         console.log(error);
@@ -31,7 +36,7 @@ function useTemplate(element) {
 
     //Nom du produit
     template.content.querySelector(
-        ".main__article__card__infos__name"
+        ".main__article__anchor__card__infos__name"
     ).textContent = element.name;
 
     var clone = document.importNode(template.content, true);

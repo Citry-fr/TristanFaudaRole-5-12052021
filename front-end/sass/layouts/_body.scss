@@ -1,7 +1,7 @@
 body {
-    background-color: #f3e9f1;
+    background-color: map-get($color, primary);
     font-family: "Nunito", sans-serif;
-    color: #261624;
+    color: map-get($color, secondary);
     padding: 0 20% 0 20%;
     @include mobile {
         padding: 0;

@@ -11,7 +11,11 @@
     align-items: center;
   }
 }
-.main__article__card {
+.main__article__anchor {
+  text-decoration: none;
+  color: #261624;
+}
+.main__article__anchor__card {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -23,17 +27,17 @@
   transition: all 0.2s linear;
   border: solid 2px #261624;
 }
-.main__article__card:hover {
+.main__article__anchor__card:hover {
   transform: scale(1.02);
 }
-.main__article__card__img {
+.main__article__anchor__card__img {
   object-fit: cover;
   width: 180px;
   height: 180px;
   border-radius: 25px 25px 0 0;
   border-bottom: solid 1px #261624;
 }
-.main__article__card__infos__name {
+.main__article__anchor__card__infos__name {
   font-weight: bold;
   margin: 0;
   text-align: center;
