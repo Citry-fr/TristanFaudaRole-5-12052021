@@ -166,6 +166,25 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 10px;
+}
+.main__prod__infos__pb {
+  display: flex;
+  justify-content: space-between;
+}
+.main__prod__infos__pb__button {
+  height: 40px;
+  align-self: center;
+  border-radius: 15px;
+  border: none;
+  border-top: 2px solid #261624;
+  border-bottom: 2px solid #261624;
+  background-color: #e1c8dc;
+  font-size: 0.7em;
+  font-family: "Nunito", sans-serif;
+}
+.main__prod__infos__pb__button:hover {
+  background-color: #f3e9f1;
 }
 
 .footer {

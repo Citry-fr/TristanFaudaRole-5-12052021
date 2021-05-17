@@ -1,5 +1,7 @@
-let urlProd = sessionStorage.getItem("urlProd");
-console.log(urlProd);
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const id = urlParams.get("id");
+const urlProd = "http://localhost:3000/api/teddies/" + id;
 
 fetch(urlProd)
     .then(function (result) {

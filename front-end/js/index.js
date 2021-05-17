@@ -1,5 +1,3 @@
-let url = "http://localhost:3000/api/teddies";
-
 //Récuperation de l'api
 fetch("http://localhost:3000/api/teddies")
     .then(function (result) {
@@ -9,13 +7,6 @@ fetch("http://localhost:3000/api/teddies")
     })
     .then(function (prod) {
         showProduit(prod);
-        const elt = document.getElementsByClassName("main__article__anchor");
-        for (const anchor in elt) {
-            elt[anchor].addEventListener("click", function (event) {
-                url = url + "/" + prod[anchor]._id;
-                sessionStorage.setItem("urlProd", url);
-            });
-        }
     })
     .catch(function (error) {
         console.log(error);
@@ -42,6 +33,9 @@ function useTemplate(element) {
     template.content.querySelector(
         ".main__article__anchor__card__infos__name"
     ).textContent = element.name;
+
+    template.content.querySelector(".main__article__anchor").href =
+        "./produit.html?id=" + element._id;
 
     var clone = document.importNode(template.content, true);
     document.getElementById("prodCards").appendChild(clone);

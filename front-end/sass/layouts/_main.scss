@@ -36,6 +36,25 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding-right: 10px;
+            &__pb {
+                display: flex;
+                justify-content: space-between;
+                &__button {
+                    height: 40px;
+                    align-self: center;
+                    border-radius: 15px;
+                    border: none;
+                    border-top: 2px solid map-get($color, secondary);
+                    border-bottom: 2px solid map-get($color, secondary);
+                    background-color: map-get($color, tertiary);
+                    font-size: 0.7em;
+                    font-family: "Nunito", sans-serif;
+                    &:hover {
+                        background-color: map-get($color, primary);
+                    }
+                }
+            }
         }
     }
 }
