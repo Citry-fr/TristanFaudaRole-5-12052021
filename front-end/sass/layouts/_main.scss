@@ -76,6 +76,12 @@
             &__pb {
                 display: flex;
                 justify-content: space-between;
+                &__price {
+                    font-weight: bold;
+                    &__amount {
+                        font-weight: 400;
+                    }
+                }
                 &__button {
                     height: 40px;
                     align-self: center;

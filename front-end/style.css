@@ -2,8 +2,8 @@
 .main__article {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 15px;
+  justify-content: space-around;
+  gap: 10px;
 }
 @media all and (max-width: 767px) {
   .main__article {
@@ -16,7 +16,7 @@
   color: #261624;
 }
 .main__article__anchor__card {
-  background-color: white;
+  background-color: #e1c8dc;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -205,6 +205,12 @@ body {
 .main__prod__infos__pb {
   display: flex;
   justify-content: space-between;
+}
+.main__prod__infos__pb__price {
+  font-weight: bold;
+}
+.main__prod__infos__pb__price__amount {
+  font-weight: 400;
 }
 .main__prod__infos__pb__button {
   height: 40px;

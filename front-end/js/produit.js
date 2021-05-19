@@ -30,8 +30,8 @@ function showProduct(response) {
     const prodImg = document.getElementById("prodImg");
     prodImg.src = response.imageUrl;
     prodImg.alt = "Photo de " + response.name;
-    const prodPrice = (document.getElementById("prodPrice").textContent =
-        "Prix : " + response.price + " €");
+    const prodPrice = (document.getElementById("priceAmount").textContent =
+        response.price + " €");
 }
 
 //Fonction remplissage template
