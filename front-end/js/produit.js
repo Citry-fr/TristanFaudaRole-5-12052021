@@ -6,30 +6,37 @@ const urlProd = "http://localhost:3000/api/teddies/" + id;
 
 //Fetch de l'api du produit
 fetch(urlProd)
+    //Check de la réponse du serveur
     .then(function (result) {
         if (result.ok) {
             return result.json();
         }
     })
+    //Utilisation des fonctions qui utilise l'api
     .then(function (produit) {
         showProduct(produit);
         for (const color in produit.colors) {
             useTemplate(produit, color);
         }
     })
+
     .catch(function (error) {
         console.log(error);
     });
 
 //Remplisage du html avec l'api
 function showProduct(response) {
+    // Nom du produit
     const prodName = (document.getElementById("prodName").textContent =
         response.name);
+    // Description du produit
     const prodDesc = (document.getElementById("prodDesc").textContent =
         response.description);
+    // Image du produit
     const prodImg = document.getElementById("prodImg");
     prodImg.src = response.imageUrl;
     prodImg.alt = "Photo de " + response.name;
+    // Prix du produit
     const prodPrice = (document.getElementById("priceAmount").textContent =
         response.price + " €");
 }
@@ -57,7 +64,7 @@ function useTemplate(element, index) {
     var clone = document.importNode(template.content, true);
     document.getElementById("ulColor").appendChild(clone);
 
-    //Ajout du label dans le html
+    //Insertion du label dans le html
     var appendLabel = document.getElementsByClassName(
         "main__prod__infos__perso__liste__element"
     );

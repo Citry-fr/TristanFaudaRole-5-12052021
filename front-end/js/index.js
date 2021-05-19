@@ -1,13 +1,16 @@
-//Récuperation de l'api
+//Fetch de l'api
 fetch("http://localhost:3000/api/teddies")
+    //Check de la réponse du serveur
     .then(function (result) {
         if (result.ok) {
             return result.json();
         }
     })
+    //Utilisation des fonctions qui utilise l'api
     .then(function (prod) {
         showProduit(prod);
     })
+    //Check les erreurs possibles
     .catch(function (error) {
         console.log(error);
     });
