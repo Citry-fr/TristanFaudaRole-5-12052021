@@ -177,30 +177,31 @@ body {
   margin: 0 0 10px 0;
   font-size: 1.3em;
 }
-.main__prod__infos__perso__liste {
-  list-style: none;
+.main__prod__infos__perso__color {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
+  justify-content: center;
+  gap: 30px;
 }
-.main__prod__infos__perso__liste__element {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-.main__prod__infos__perso__liste__element__check {
-  display: none;
-}
-.main__prod__infos__perso__liste__element__label {
-  cursor: pointer;
-}
-.main__prod__infos__perso__liste__element__check:checked + .main__prod__infos__perso__liste__element__label {
+.main__prod__infos__perso__color__liste {
+  appearance: none;
   border-top: 2px solid #261624;
   border-bottom: 2px solid #261624;
+  width: 150px;
+  text-align-last: center;
+  font-size: 1em;
   border-radius: 10px;
+  outline: none;
+  background-color: #e1c8dc;
+  font-family: "Nunito", sans-serif;
+}
+.main__prod__infos__perso__color__liste:focus {
+  background-color: #f3e9f1;
+}
+.main__prod__infos__perso__color__liste__choice {
+  background-color: #e1c8dc;
+}
+.main__prod__infos__perso__color__liste__choice:hover {
+  background-color: #f3e9f1;
 }
 .main__prod__infos__pb {
   display: flex;

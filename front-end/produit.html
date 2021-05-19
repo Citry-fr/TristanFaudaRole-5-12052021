@@ -72,10 +72,18 @@
                         <h2 class="main__prod__infos__perso__title">
                             Personnalisation
                         </h2>
-                        <ul
-                            class="main__prod__infos__perso__liste"
-                            id="ulColor"
-                        ></ul>
+                        <div class="main__prod__infos__perso__color">
+                            <label
+                                for="colorSelect"
+                                class="main__prod__infos__perso__color__name"
+                                >Couleur :
+                            </label>
+                            <select
+                                name="color"
+                                id="colorSelect"
+                                class="main__prod__infos__perso__color__liste"
+                            ></select>
+                        </div>
                     </div>
                     <div class="main__prod__infos__pb">
                         <p class="main__prod__infos__pb__price" id="prodPrice">
@@ -100,5 +108,12 @@
         <footer class="footer">
             <p class="footer__wait">Footer en construction</p>
         </footer>
+
+        <template id="colorTemplate">
+            <option
+                value=""
+                class="main__prod__infos__perso__color__liste__choice"
+            ></option>
+        </template>
     </body>
 </html>

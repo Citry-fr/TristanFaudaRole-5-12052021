@@ -16,7 +16,7 @@ fetch(urlProd)
     .then(function (produit) {
         showProduct(produit);
         for (const color in produit.colors) {
-            useTemplate(produit, color);
+            fillColor(produit, color);
         }
     })
 
@@ -42,6 +42,17 @@ function showProduct(response) {
     // Prix du produit
     const prodPrice = (document.getElementById("priceAmount").textContent =
         response.price + " €");
+}
+
+function fillColor(element, index) {
+    var template = document.querySelector("#colorTemplate");
+
+    var option = template.content.querySelector("option");
+    option.textContent = element.colors[index];
+    option.value = element.colors[index];
+
+    var clone = document.importNode(template.content, true);
+    document.getElementById("colorSelect").appendChild(clone);
 }
 
 //test en cours

@@ -8,3 +8,7 @@
         @content;
     }
 }
+
+@mixin font {
+    font-family: "Nunito", sans-serif;
+}

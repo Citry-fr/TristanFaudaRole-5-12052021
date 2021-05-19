@@ -47,28 +47,29 @@
                     margin: 0 0 10px 0;
                     font-size: 1.3em;
                 }
-                &__liste {
-                    list-style: none;
+                &__color {
                     display: flex;
-                    justify-content: space-evenly;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                    margin: 0;
-                    padding: 0;
-                    &__element {
-                        display: inline-block;
-                        margin: 0;
-                        padding: 0;
-                        &__check {
-                            display: none;
+                    justify-content: center;
+                    gap: 30px;
+                    &__liste {
+                        appearance: none;
+                        border-top: 2px solid map-get($color, secondary);
+                        border-bottom: 2px solid map-get($color, secondary);
+                        width: 150px;
+                        text-align-last: center;
+                        font-size: 1em;
+                        border-radius: 10px;
+                        outline: none;
+                        background-color: map-get($color, tertiary);
+                        @include font;
+                        &:focus {
+                            background-color: map-get($color, primary);
                         }
-                        &__label {
-                            cursor: pointer;
-                        }
-                        &__check:checked + &__label {
-                            border-top: 2px solid map-get($color, secondary);
-                            border-bottom: 2px solid map-get($color, secondary);
-                            border-radius: 10px;
+                        &__choice {
+                            background-color: map-get($color, tertiary);
+                            &:hover {
+                                background-color: map-get($color, primary);
+                            }
                         }
                     }
                 }
@@ -91,7 +92,7 @@
                     border-bottom: 2px solid map-get($color, secondary);
                     background-color: map-get($color, tertiary);
                     font-size: 0.7em;
-                    font-family: "Nunito", sans-serif;
+                    @include font;
                     &:hover {
                         background-color: map-get($color, primary);
                     }
