@@ -24,7 +24,10 @@ fetch(urlProd)
         console.log(error);
     });
 
-//Remplisage du html avec l'api
+/**
+ * Remplis le html avec les données du produit
+ * @param {object} response
+ */
 function showProduct(response) {
     // Nom du produit
     const prodName = (document.getElementById("prodName").textContent =
@@ -39,36 +42,6 @@ function showProduct(response) {
     // Prix du produit
     const prodPrice = (document.getElementById("priceAmount").textContent =
         response.price + " €");
-}
-
-//Fonction remplissage template
-function useTemplate(element, index) {
-    //Récuperation du template
-    var template = document.querySelector("#persoTemplate");
-
-    //Ajout des id au radio bouton
-    template.content.querySelector(
-        ".main__prod__infos__perso__liste__element__check"
-    ).id = element.colors[index];
-
-    //Création d'un label
-    var label = document.createElement("label");
-    label.setAttribute(
-        "class",
-        "main__prod__infos__perso__liste__element__label"
-    );
-    label.setAttribute("for", element.colors[index]);
-    label.textContent = element.colors[index];
-
-    //Ajout du template remplis dans le html
-    var clone = document.importNode(template.content, true);
-    document.getElementById("ulColor").appendChild(clone);
-
-    //Insertion du label dans le html
-    var appendLabel = document.getElementsByClassName(
-        "main__prod__infos__perso__liste__element"
-    );
-    appendLabel[index].appendChild(label);
 }
 
 //test en cours
