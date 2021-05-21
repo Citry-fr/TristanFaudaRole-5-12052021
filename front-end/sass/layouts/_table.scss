@@ -6,11 +6,36 @@
     font-size: 1.2em;
     border-radius: 25px;
     background-color: map-get($color, tertiary);
+
     &__head {
         font-weight: bold;
         &__row {
             &__cell {
                 border-bottom: 2px solid map-get($color, secondary);
+                border-radius: 25px;
+            }
+        }
+    }
+    &__body {
+        &__row {
+            &__cell {
+                min-width: 219px;
+                &__quantity {
+                    width: 35px;
+                    text-align: center;
+                    background-color: map-get($color, primary);
+                    @include border(2);
+                    border-radius: 8px;
+                    @include font;
+                }
+            }
+        }
+    }
+    &__foot {
+        font-weight: bold;
+        &__row {
+            &__cell {
+                border-top: 2px solid map-get($color, secondary);
                 border-radius: 25px;
             }
         }

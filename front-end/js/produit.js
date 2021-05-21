@@ -94,6 +94,7 @@ function fillCart(input) {
                         ) {
                             console.log(true + "COLOR");
                             productArray[index].prodQuantity++;
+                            productArray[index].prodPrice += produit.prodPrice;
                             string(productArray);
                         } else {
                             isPresent = false;

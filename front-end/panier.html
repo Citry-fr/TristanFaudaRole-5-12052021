@@ -78,9 +78,20 @@
                         <th class="main__table__head__row__cell">Prix</th>
                     </tr>
                 </thead>
-                <tbody class="body" id="tableBody">
-                    <tr class="main__table__body__row"></tr>
-                </tbody>
+                <tbody class="main__table__body" id="tableBody"></tbody>
+                <tfoot class="main__table__foot">
+                    <tr class="main__table__foot__row">
+                        <td class="main__table__foot__row__cell" colspan="3">
+                            Total
+                        </td>
+                        <td
+                            id="priceTotal"
+                            class="main__table__foot__row__cell"
+                        >
+                            0 €
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </main>
 
@@ -92,8 +103,19 @@
             <tr class="main__table__body__row">
                 <td class="main__table__body__row__cell"></td>
                 <td class="main__table__body__row__cell"></td>
-                <td class="main__table__body__row__cell"></td>
-                <td class="main__table__body__row__cell"></td>
+                <td class="main__table__body__row__cell">
+                    <input
+                        type="number"
+                        class="main__table__body__row__cell__quantity"
+                        min="0"
+                    />
+                </td>
+                <td class="main__table__body__row__cell price"></td>
+            </tr>
+        </template>
+        <template id="emptyTemplate">
+            <tr id="cartEmpty">
+                <td colspan="4">Votre panier est vide.</td>
             </tr>
         </template>
     </body>

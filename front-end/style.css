@@ -259,5 +259,23 @@ body {
   border-bottom: 2px solid #261624;
   border-radius: 25px;
 }
+.main__table__body__row__cell {
+  min-width: 219px;
+}
+.main__table__body__row__cell__quantity {
+  width: 35px;
+  text-align: center;
+  background-color: #f3e9f1;
+  border: solid 2px #261624;
+  border-radius: 8px;
+  font-family: "Nunito", sans-serif;
+}
+.main__table__foot {
+  font-weight: bold;
+}
+.main__table__foot__row__cell {
+  border-top: 2px solid #261624;
+  border-radius: 25px;
+}
 
 /*# sourceMappingURL=style.css.map */
