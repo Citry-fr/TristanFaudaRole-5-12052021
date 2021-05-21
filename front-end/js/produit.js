@@ -4,8 +4,6 @@ const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get("id");
 const urlProd = "http://localhost:3000/api/teddies/" + id;
 
-let produitArray = [];
-
 //Fetch de l'api du produit
 fetch(urlProd)
     //Check de la réponse du serveur
@@ -58,52 +56,54 @@ function fillColor(element, index) {
     document.getElementById("colorSelect").appendChild(clone);
 }
 
-string = (input) => {
+function string(input) {
     localStorage.setItem("produits", JSON.stringify(input));
-};
+}
 
-function fillCart(element) {
+function fillCart(input) {
     const btn = document
         .getElementById("addCart")
         .addEventListener("click", function () {
-            const parse = JSON.parse(localStorage.getItem("produits"));
             const select = document.getElementById("colorSelect");
+            let parse = JSON.parse(localStorage.getItem("produits"));
 
-            let produitModif;
             let produit = {
-                prodName: element.name,
-                prodPrice: element.price,
-                prodId: element._id,
+                prodName: input.name,
+                prodPrice: input.price,
+                prodId: input._id,
                 prodColor: document.getElementById("colorSelect").value,
                 prodQuantity: 1,
             };
 
-            if (localStorage.getItem("produits") === null) {
-                produitArray.push(produit);
-                localStorage.setItem("produits", JSON.stringify(produitArray));
-                console.log(localStorage);
-            } else {
-                for (const prod in parse) {
-                    if (
-                        produit.prodId === parse[prod].prodId &&
-                        produit.prodColor === parse[prod].prodColor
-                    ) {
-                        produitModif = parse[prod];
-                        console.log(produitModif);
-                        produitModif.prodQuantity++;
-                        string(produitModif);
-                        console.log("Incrémente");
-                        break;
-                    } else {
-                        produitArray.push(produit);
-                        string(produitArray);
-                        console.log("ADD");
-                    }
-                    console.log(parse[prod]);
-                }
+            let productArray = [];
 
-                console.log(localStorage);
+            if (localStorage.getItem("produits") === null) {
+                productArray.push(produit);
+                string(productArray);
+                console.log(localStorage.getItem("produits"));
+            } else {
+                productArray = parse;
+                let isPresent = false;
+
+                for (const index in productArray) {
+                    if (produit.prodId === productArray[index].prodId) {
+                        console.log(true + "ID");
+                        isPresent = true;
+                        if (
+                            produit.prodColor === productArray[index].prodColor
+                        ) {
+                            console.log(true + "COLOR");
+                            productArray[index].prodQuantity++;
+                            string(productArray);
+                        } else {
+                            isPresent = false;
+                        }
+                    }
+                }
+                if (!isPresent) {
+                    productArray.push(produit);
+                    string(productArray);
+                }
             }
-            console.log(localStorage.getItem("produits"));
         });
 }

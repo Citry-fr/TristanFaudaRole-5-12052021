@@ -30,11 +30,15 @@
 .main__article__anchor__card:hover {
   transform: scale(1.02);
 }
-.main__article__anchor__card__img {
-  object-fit: cover;
+.main__article__anchor__card__imgDiv {
   width: 180px;
   height: 180px;
-  border-radius: 25px 25px 0 0;
+}
+.main__article__anchor__card__imgDiv__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px 22px 0 0;
   border-bottom: solid 1px #261624;
 }
 .main__article__anchor__card__infos__name {
