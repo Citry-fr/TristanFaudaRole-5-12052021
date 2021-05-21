@@ -8,7 +8,98 @@
         />
         <link rel="stylesheet" href="./style.css" />
         <script src="./js/panier.js" defer></script>
+        <script
+            src="https://kit.fontawesome.com/8bebfe2d5a.js"
+            crossorigin="anonymous"
+            defer
+        ></script>
         <title>Orinoco</title>
     </head>
-    <body></body>
+    <body>
+        <header class="header">
+            <img
+                class="header__logo"
+                src="./img/logo_orinoco.png"
+                alt="Logo Orinoco"
+            />
+            <!-- Menu Navigation -->
+            <nav class="header__nav">
+                <ul class="header__nav__list">
+                    <a
+                        href="./index.html"
+                        id="home"
+                        class="header__nav__list__a"
+                        ><li class="header__nav__list__a__element">
+                            <i
+                                class="
+                                    fas
+                                    fa-home
+                                    header__nav__list__a__element__fa
+                                "
+                            ></i
+                            >Accueil
+                        </li></a
+                    >
+                    <a
+                        href="./panier.html"
+                        id="cart"
+                        class="header__nav__list__a"
+                        ><li class="header__nav__list__a__element">
+                            <i
+                                class="
+                                    fas
+                                    fa-shopping-cart
+                                    header__nav__list__a__element__fa
+                                "
+                            ></i>
+                            <p class="header__nav__list__a__element__cart">
+                                Panier (<span
+                                    class="
+                                        header__nav__list__a__element__cart__amount
+                                    "
+                                    id="amount"
+                                    >0</span
+                                >)
+                            </p>
+                        </li></a
+                    >
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <h1 class="main__title">Panier</h1>
+            <table class="main__table">
+                <thead class="main__table__head">
+                    <tr class="main__table__head__row">
+                        <th class="main__table__head__row__cell">Nom</th>
+                        <th class="main__table__head__row__cell">Couleur</th>
+                        <th class="main__table__head__row__cell">Quantité</th>
+                        <th class="main__table__head__row__cell">Prix</th>
+                    </tr>
+                </thead>
+                <tbody class="body">
+                    <tr class="main__table__body__row">
+                        <td class="main__table__body__row__cell">Tristan</td>
+                        <td class="main__table__body__row__cell">Rouge</td>
+                        <td class="main__table__body__row__cell">1</td>
+                        <td class="main__table__body__row__cell">4500 €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__wait">Footer en construction</p>
+        </footer>
+
+        <template>
+            <tr class="main__table__body__row">
+                <td class="main__table__body__row__cell"></td>
+                <td class="main__table__body__row__cell"></td>
+                <td class="main__table__body__row__cell"></td>
+                <td class="main__table__body__row__cell"></td>
+            </tr>
+        </template>
+    </body>
 </html>

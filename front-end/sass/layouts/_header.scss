@@ -56,6 +56,9 @@
                     &__fa {
                         color: map-get($color, secondary);
                     }
+                    &__cart {
+                        margin: 0;
+                    }
                 }
             }
         }

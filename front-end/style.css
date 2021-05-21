@@ -127,6 +127,9 @@ body {
 .header__nav__list__a__element__fa {
   color: #261624;
 }
+.header__nav__list__a__element__cart {
+  margin: 0;
+}
 
 .main {
   margin-bottom: 50px;
@@ -238,6 +241,23 @@ body {
 .footer__wait {
   font-size: 1.2em;
   text-align: center;
+}
+
+.main__table {
+  margin-top: 30px;
+  width: 100%;
+  border: solid 2px #261624;
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 25px;
+  background-color: #e1c8dc;
+}
+.main__table__head {
+  font-weight: bold;
+}
+.main__table__head__row__cell {
+  border-bottom: 2px solid #261624;
+  border-radius: 25px;
 }
 
 /*# sourceMappingURL=style.css.map */

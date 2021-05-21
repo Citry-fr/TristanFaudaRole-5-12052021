@@ -12,3 +12,7 @@
 @mixin font {
     font-family: "Nunito", sans-serif;
 }
+
+@mixin border($size) {
+    border: solid $size + px map-get($color, secondary);
+}
