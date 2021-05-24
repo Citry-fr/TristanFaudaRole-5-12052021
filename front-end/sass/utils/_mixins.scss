@@ -16,3 +16,14 @@
 @mixin border($size) {
     border: solid $size + px map-get($color, secondary);
 }
+
+@mixin input {
+    height: 20px;
+    width: 200px;
+    border: 1px solid map-get($color, secondary);
+    border-radius: 10px;
+    background-color: map-get($color, primary);
+    padding-left: 5px;
+    font-size: 0.8em;
+    @include font;
+}

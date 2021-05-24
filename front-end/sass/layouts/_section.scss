@@ -1,0 +1,52 @@
+.section {
+    display: flex;
+    justify-content: center;
+    background-color: map-get($color, tertiary);
+    border: 2px solid map-get($color, secondary);
+    border-radius: 25px;
+    &__form {
+        width: 100%;
+        padding: 20px 15% 20px 15%;
+        color: map-get($color, secondary);
+        font-weight: bold;
+        @include font;
+        font-size: 1.1em;
+        &__fullname {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            &__firstname {
+                &__input {
+                    @include input;
+                }
+            }
+            &__lastname {
+                &__input {
+                    @include input;
+                }
+            }
+        }
+        &__local {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            &__city {
+                &__input {
+                    @include input;
+                }
+            }
+            &__address {
+                &__input {
+                    @include input;
+                }
+            }
+        }
+        &__email {
+            display: flex;
+            justify-content: center;
+            &__input {
+                @include input;
+            }
+        }
+    }
+}

@@ -278,4 +278,84 @@ body {
   border-radius: 25px;
 }
 
+.section {
+  display: flex;
+  justify-content: center;
+  background-color: #e1c8dc;
+  border: 2px solid #261624;
+  border-radius: 25px;
+}
+.section__form {
+  width: 100%;
+  padding: 20px 15% 20px 15%;
+  color: #261624;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.1em;
+}
+.section__form__fullname {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.section__form__fullname__firstname__input {
+  height: 20px;
+  width: 200px;
+  border: 1px solid #261624;
+  border-radius: 10px;
+  background-color: #f3e9f1;
+  padding-left: 5px;
+  font-size: 0.8em;
+  font-family: "Nunito", sans-serif;
+}
+.section__form__fullname__lastname__input {
+  height: 20px;
+  width: 200px;
+  border: 1px solid #261624;
+  border-radius: 10px;
+  background-color: #f3e9f1;
+  padding-left: 5px;
+  font-size: 0.8em;
+  font-family: "Nunito", sans-serif;
+}
+.section__form__local {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.section__form__local__city__input {
+  height: 20px;
+  width: 200px;
+  border: 1px solid #261624;
+  border-radius: 10px;
+  background-color: #f3e9f1;
+  padding-left: 5px;
+  font-size: 0.8em;
+  font-family: "Nunito", sans-serif;
+}
+.section__form__local__address__input {
+  height: 20px;
+  width: 200px;
+  border: 1px solid #261624;
+  border-radius: 10px;
+  background-color: #f3e9f1;
+  padding-left: 5px;
+  font-size: 0.8em;
+  font-family: "Nunito", sans-serif;
+}
+.section__form__email {
+  display: flex;
+  justify-content: center;
+}
+.section__form__email__input {
+  height: 20px;
+  width: 200px;
+  border: 1px solid #261624;
+  border-radius: 10px;
+  background-color: #f3e9f1;
+  padding-left: 5px;
+  font-size: 0.8em;
+  font-family: "Nunito", sans-serif;
+}
+
 /*# sourceMappingURL=style.css.map */
