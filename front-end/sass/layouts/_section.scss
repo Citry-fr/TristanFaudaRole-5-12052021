@@ -4,9 +4,10 @@
     background-color: map-get($color, tertiary);
     border: 2px solid map-get($color, secondary);
     border-radius: 25px;
+    margin-bottom: 40px;
     &__form {
         width: 100%;
-        padding: 20px 15% 20px 15%;
+        padding: 20px 20px;
         color: map-get($color, secondary);
         font-weight: bold;
         @include font;
@@ -44,6 +45,7 @@
         &__email {
             display: flex;
             justify-content: center;
+            gap: 5px;
             &__input {
                 @include input;
             }

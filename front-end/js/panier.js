@@ -7,6 +7,47 @@ function cartAmount() {
     document.getElementById("amount").textContent = amount;
 }
 
+document
+    .getElementById("orderButton")
+    .addEventListener("click", function (event) {
+        event.preventDefault();
+        let product_id = [];
+        const cart = JSON.parse(localStorage.getItem("produits"));
+        for (const product in cart) {
+            product_id.push(cart[product].prodId);
+        }
+
+        let contact = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("adress").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value,
+        };
+
+        let myJson = {
+            contact: contact,
+            products: product_id,
+        };
+
+        console.log(JSON.stringify(myJson));
+
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(myJson),
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+            });
+    });
+
 cartAmount();
 
 let productArray = JSON.parse(localStorage.getItem("produits"));
@@ -43,8 +84,8 @@ for (const index in productArray) {
     );
 }
 
-const quantity = document.querySelectorAll(
-    ".main__table__body__row__cell__quantity"
+const quantity = document.getElementsByClassName(
+    "main__table__body__row__cell__quantity"
 );
 const price = document.querySelectorAll(".price");
 
@@ -59,8 +100,11 @@ for (const element in quantity) {
         console.log(
             storage[element].prodQuantity + " " + storage[element].prodPrice
         );
+
+        console.log(storage[element]);
         storage[element].prodQuantity = value;
         storage[element].prodPrice = priceModif;
+        console.log(storage[element]);
         console.log(
             storage[element].prodQuantity + " " + storage[element].prodPrice
         );
@@ -80,5 +124,6 @@ for (const element in quantity) {
         localStorage.setItem("produits", JSON.stringify(storage));
 
         cartAmount();
+        document.location.reload();
     });
 }

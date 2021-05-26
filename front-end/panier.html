@@ -96,7 +96,7 @@
         </main>
 
         <section class="section">
-            <form class="section__form" action="">
+            <form class="section__form">
                 <div class="section__form__fullname">
                     <div class="section__form__fullname__firstname">
                         <label
@@ -169,6 +169,14 @@
                         required
                     />
                 </div>
+                <div class="section__form__order">
+                    <button
+                        class="section__form__order__button"
+                        id="orderButton"
+                    >
+                        Commander
+                    </button>
+                </div>
             </form>
         </section>
 
@@ -177,7 +185,7 @@
         </footer>
 
         <template id="cartTemplate">
-            <tr class="main__table__body__row">
+            <tr class="main__table__body__row" data-id="">
                 <td class="main__table__body__row__cell"></td>
                 <td class="main__table__body__row__cell"></td>
                 <td class="main__table__body__row__cell">
