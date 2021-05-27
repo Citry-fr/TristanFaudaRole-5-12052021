@@ -187,7 +187,7 @@
         </footer>
 
         <template id="cartTemplate">
-            <tr class="main__table__body__row" data-id="">
+            <tr class="main__table__body__row" data-id="" data-color="">
                 <td class="main__table__body__row__cell"></td>
                 <td class="main__table__body__row__cell"></td>
                 <td class="main__table__body__row__cell">
@@ -199,13 +199,15 @@
                 </td>
                 <td class="main__table__body__row__cell price"></td>
                 <td class="main__table__body__row__cell">
-                    <i
-                        class="
-                            far
-                            fa-times-circle
-                            main__table__body__row__cell__delete
-                        "
-                    ></i>
+                    <button class="main__table__body__row__cell__delete">
+                        <i
+                            class="
+                                far
+                                fa-times-circle
+                                main__table__body__row__cell__delete__icone
+                            "
+                        ></i>
+                    </button>
                 </td>
             </tr>
         </template>

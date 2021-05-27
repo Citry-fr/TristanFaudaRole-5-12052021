@@ -29,10 +29,16 @@
                     @include font;
                 }
                 &__delete {
-                    display: flex;
-                    justify-content: center;
-                    &:hover {
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    background-color: map-get($color, tertiary);
+                    &:hover &__icone {
                         font-weight: bold;
+                    }
+                    &__icone {
+                        font-size: 1.4em;
                     }
                 }
             }

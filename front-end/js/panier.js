@@ -63,6 +63,10 @@ totalPriceHtml.textContent = totalPrice + " €";
 function useTemplate(input) {
     var template = document.querySelector("#cartTemplate");
 
+    var tr = template.content.querySelector("tr");
+    tr.dataset.id = input.prodId;
+    tr.dataset.color = input.prodColor;
+
     var td = template.content.querySelectorAll(".main__table__body__row__cell");
     td[0].textContent = input.prodName;
     td[1].textContent = input.prodColor;
@@ -88,3 +92,26 @@ const quantity = document.getElementsByClassName(
     "main__table__body__row__cell__quantity"
 );
 const price = document.querySelectorAll(".price");
+
+const del = document
+    .querySelectorAll(".main__table__body__row__cell__delete")
+    .forEach((item) => {
+        item.addEventListener("click", function (e) {
+            let row = item.closest("tr");
+            let id = row.dataset.id;
+            let color = row.dataset.color;
+            let tempArray = JSON.parse(localStorage.getItem("produits"));
+            console.log(tempArray);
+            for (const prod in tempArray) {
+                if (
+                    tempArray[prod].prodId === id &&
+                    tempArray[prod].prodColor === color
+                ) {
+                    tempArray.splice(prod, 1);
+                }
+            }
+            console.log(tempArray);
+            localStorage.setItem("produits", JSON.stringify(tempArray));
+            location.reload();
+        });
+    });

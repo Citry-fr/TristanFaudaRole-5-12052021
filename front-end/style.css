@@ -271,11 +271,17 @@ body {
   font-family: "Nunito", sans-serif;
 }
 .main__table__body__row__cell__delete {
-  display: flex;
-  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #e1c8dc;
 }
-.main__table__body__row__cell__delete:hover {
+.main__table__body__row__cell__delete:hover .main__table__body__row__cell__delete__icone {
   font-weight: bold;
+}
+.main__table__body__row__cell__delete__icone {
+  font-size: 1.4em;
 }
 .main__table__foot {
   font-weight: bold;
