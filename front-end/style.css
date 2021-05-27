@@ -260,7 +260,7 @@ body {
   border-radius: 25px;
 }
 .main__table__body__row__cell {
-  min-width: 219px;
+  max-width: 219px;
 }
 .main__table__body__row__cell__quantity {
   width: 35px;

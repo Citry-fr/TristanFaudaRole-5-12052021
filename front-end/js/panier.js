@@ -81,19 +81,7 @@ function useTemplate(input) {
     document.getElementById("tableBody").appendChild(clone);
 }
 
-let priceArray = [];
-for (const index in productArray) {
-    priceArray.push(
-        productArray[index].prodPrice / productArray[index].prodQuantity
-    );
-}
-
-const quantity = document.getElementsByClassName(
-    "main__table__body__row__cell__quantity"
-);
-const price = document.querySelectorAll(".price");
-
-const del = document
+document
     .querySelectorAll(".main__table__body__row__cell__delete")
     .forEach((item) => {
         item.addEventListener("click", function (e) {
@@ -115,3 +103,42 @@ const del = document
             location.reload();
         });
     });
+
+document
+    .querySelectorAll(".main__table__body__row__cell__quantity")
+    .forEach((input) => {
+        input.addEventListener("change", function (e) {
+            let tempArray = JSON.parse(localStorage.getItem("produits"));
+            let tempQuantity = input.value;
+            let row = input.closest("tr");
+            let id = row.dataset.id;
+            let color = row.dataset.color;
+            for (const prod in tempArray) {
+                if (
+                    tempArray[prod].prodId === id &&
+                    tempArray[prod].prodColor === color
+                ) {
+                    let initialPrice =
+                        tempArray[prod].prodPrice /
+                        tempArray[prod].prodQuantity;
+                    console.log(initialPrice);
+                    row.querySelector(".price").textContent =
+                        initialPrice * tempQuantity + " €";
+                    tempArray[prod].prodPrice = initialPrice * tempQuantity;
+                    tempArray[prod].prodQuantity = parseInt(tempQuantity);
+                }
+            }
+            refreshPrice(tempArray);
+            localStorage.setItem("produits", JSON.stringify(tempArray));
+            console.log(JSON.parse(localStorage.getItem("produits")));
+            cartAmount();
+        });
+    });
+
+function refreshPrice(prodArray) {
+    totalPrice = 0;
+    for (const prod in prodArray) {
+        totalPrice += prodArray[prod].prodPrice;
+    }
+    totalPriceHtml.textContent = totalPrice + " €";
+}
