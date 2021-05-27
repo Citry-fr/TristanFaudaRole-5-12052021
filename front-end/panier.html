@@ -76,6 +76,7 @@
                         <th class="main__table__head__row__cell">Couleur</th>
                         <th class="main__table__head__row__cell">Quantité</th>
                         <th class="main__table__head__row__cell">Prix</th>
+                        <th class="main__table__head__row__cell">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody class="main__table__body" id="tableBody"></tbody>
@@ -87,6 +88,7 @@
                         <td
                             id="priceTotal"
                             class="main__table__foot__row__cell"
+                            colspan="2"
                         >
                             0 €
                         </td>
@@ -196,6 +198,15 @@
                     />
                 </td>
                 <td class="main__table__body__row__cell price"></td>
+                <td class="main__table__body__row__cell">
+                    <i
+                        class="
+                            far
+                            fa-times-circle
+                            main__table__body__row__cell__delete
+                        "
+                    ></i>
+                </td>
             </tr>
         </template>
         <template id="emptyTemplate">

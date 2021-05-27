@@ -270,6 +270,13 @@ body {
   border-radius: 8px;
   font-family: "Nunito", sans-serif;
 }
+.main__table__body__row__cell__delete {
+  display: flex;
+  justify-content: center;
+}
+.main__table__body__row__cell__delete:hover {
+  font-weight: bold;
+}
 .main__table__foot {
   font-weight: bold;
 }

@@ -28,6 +28,13 @@
                     border-radius: 8px;
                     @include font;
                 }
+                &__delete {
+                    display: flex;
+                    justify-content: center;
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }
