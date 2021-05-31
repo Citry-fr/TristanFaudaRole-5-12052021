@@ -98,7 +98,7 @@
         </main>
 
         <section class="section">
-            <form class="section__form">
+            <form class="section__form" id="orderForm">
                 <div class="section__form__fullname">
                     <div class="section__form__fullname__firstname">
                         <label
@@ -111,6 +111,8 @@
                             id="firstName"
                             name="firstName"
                             class="section__form__fullname__firstname__input"
+                            pattern="^([A-zÀ-ú-'])+\D$"
+                            title="Pas de chiffre ni de caractères spéciaux hormis - et '"
                             required
                         />
                     </div>
@@ -125,6 +127,8 @@
                             id="lastName"
                             name="lastName"
                             class="section__form__fullname__lastname__input"
+                            pattern="^([A-zÀ-ú-'])+\D$"
+                            title="Pas de chiffre ni de caractères spéciaux hormis - et '"
                             required
                         />
                     </div>
@@ -141,6 +145,8 @@
                             id="city"
                             name="city"
                             class="section__form__local__city__input"
+                            pattern="^([A-zÀ-ú-']\s*)+\D$"
+                            title="Pas de chiffre ni de caractères spéciaux hormis - et '"
                             required
                         />
                     </div>
@@ -155,6 +161,8 @@
                             id="adress"
                             name="adress"
                             class="section__form__local__address__input"
+                            pattern="^([0-9A-zÀ-ú-']\s*)+$"
+                            title="Pas de caractères spéciaux hormis - et '"
                             required
                         />
                     </div>
@@ -172,12 +180,13 @@
                     />
                 </div>
                 <div class="section__form__order">
-                    <button
+                    <input
                         class="section__form__order__button"
                         id="orderButton"
-                    >
-                        Commander
-                    </button>
+                        type="submit"
+                        value="Commander"
+                        formaction="#"
+                    />
                 </div>
             </form>
         </section>

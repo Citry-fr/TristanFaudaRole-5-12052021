@@ -6,46 +6,56 @@ function cartAmount() {
     }
     document.getElementById("amount").textContent = amount;
 }
+function refreshPrice(prodArray) {
+    totalPrice = 0;
+    for (const prod in prodArray) {
+        totalPrice += prodArray[prod].prodPrice;
+    }
+    totalPriceHtml.textContent = totalPrice + " €";
+}
 
 document
     .getElementById("orderButton")
     .addEventListener("click", function (event) {
-        event.preventDefault();
-        let product_id = [];
-        const cart = JSON.parse(localStorage.getItem("produits"));
-        for (const product in cart) {
-            product_id.push(cart[product].prodId);
-        }
+        if (document.getElementById("orderForm").checkValidity()) {
+            let product_id = [];
+            const cart = JSON.parse(localStorage.getItem("produits"));
+            for (const product in cart) {
+                product_id.push(cart[product].prodId);
+            }
 
-        let contact = {
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            address: document.getElementById("adress").value,
-            city: document.getElementById("city").value,
-            email: document.getElementById("email").value,
-        };
+            let contact = {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                address: document.getElementById("adress").value,
+                city: document.getElementById("city").value,
+                email: document.getElementById("email").value,
+            };
 
-        let myJson = {
-            contact: contact,
-            products: product_id,
-        };
+            let myJson = {
+                contact: contact,
+                products: product_id,
+            };
 
-        console.log(JSON.stringify(myJson));
+            console.log(JSON.stringify(myJson));
 
-        fetch("http://localhost:3000/api/teddies/order", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(myJson),
-        })
-            .then(function (response) {
-                return response.json();
+            fetch("http://localhost:3000/api/teddies/order", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(myJson),
             })
-            .then((data) => {
-                console.log(data);
-            });
+                .then(function (response) {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                });
+        } else {
+            console.log("Formulaire pas bon");
+        }
     });
 
 cartAmount();
@@ -134,11 +144,3 @@ document
             cartAmount();
         });
     });
-
-function refreshPrice(prodArray) {
-    totalPrice = 0;
-    for (const prod in prodArray) {
-        totalPrice += prodArray[prod].prodPrice;
-    }
-    totalPriceHtml.textContent = totalPrice + " €";
-}
