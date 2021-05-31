@@ -50,5 +50,21 @@
                 @include input;
             }
         }
+        &__order {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            &__button {
+                background-color: map-get($color, tertiary);
+                border: solid 2px map-get($color, secondary);
+                @include font;
+                border-radius: 10px;
+                font-weight: bold;
+                font-size: 1em;
+                &:hover {
+                    background-color: map-get($color, primary);
+                }
+            }
+        }
     }
 }

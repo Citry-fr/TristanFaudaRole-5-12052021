@@ -372,5 +372,21 @@ body {
   font-size: 0.8em;
   font-family: "Nunito", sans-serif;
 }
+.section__form__order {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.section__form__order__button {
+  background-color: #e1c8dc;
+  border: solid 2px #261624;
+  font-family: "Nunito", sans-serif;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1em;
+}
+.section__form__order__button:hover {
+  background-color: #f3e9f1;
+}
 
 /*# sourceMappingURL=style.css.map */
