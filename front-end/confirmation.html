@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="stylesheet" href="./style.css" />
+        <script src="./js/confirmation.js" defer></script>
+        <script
+            src="https://kit.fontawesome.com/8bebfe2d5a.js"
+            crossorigin="anonymous"
+            defer
+        ></script>
+        <title>Orinoco</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <img
+                class="header__logo"
+                src="./img/logo_orinoco.png"
+                alt="Logo Orinoco"
+            />
+            <!-- Menu Navigation -->
+            <nav class="header__nav">
+                <ul class="header__nav__list">
+                    <a
+                        href="./index.html"
+                        id="home"
+                        class="header__nav__list__a"
+                        ><li class="header__nav__list__a__element">
+                            <i
+                                class="
+                                    fas
+                                    fa-home
+                                    header__nav__list__a__element__fa
+                                "
+                            ></i
+                            >Accueil
+                        </li></a
+                    >
+                    <a
+                        href="./panier.html"
+                        id="cart"
+                        class="header__nav__list__a"
+                        ><li class="header__nav__list__a__element">
+                            <i
+                                class="
+                                    fas
+                                    fa-shopping-cart
+                                    header__nav__list__a__element__fa
+                                "
+                            ></i>
+                            <p class="header__nav__list__a__element__cart">
+                                Panier (<span
+                                    class="
+                                        header__nav__list__a__element__cart__amount
+                                    "
+                                    id="amount"
+                                    >0</span
+                                >)
+                            </p>
+                        </li></a
+                    >
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="main__thanking">
+                <h1 class="main__thanking__title">
+                    Merci pour votre commande !
+                </h1>
+                <p class="main__thanking__title__orderId">
+                    Votre numéro de commande est le :
+                    <span class="main__thanking__title__orderId__id"
+                        >reregrezge</span
+                    >
+                </p>
+                <p class="main__thanking__title__orderPrice">
+                    Le prix total de votre commande est :
+                    <span class="main__thanking__title__orderPrice__price"
+                        >grezgregre</span
+                    >
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer__wait">Footer en construction</p>
+        </footer>
+
+        <template id="colorTemplate">
+            <option
+                value=""
+                class="main__prod__infos__perso__color__liste__choice"
+            ></option>
+        </template>
+    </body>
+</html>

@@ -234,6 +234,12 @@ body {
 .main__prod__infos__pb__button:hover {
   background-color: #f3e9f1;
 }
+.main__thanking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+}
 
 .footer {
   border-top: 2px solid #261624;
