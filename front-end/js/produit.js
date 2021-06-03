@@ -1,31 +1,41 @@
 import { cartAmount } from "./fonctionsPanier.js";
 
 // Récupérer l'id dans la barre de recherche
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get("id");
-const urlProd = "http://localhost:3000/api/teddies/" + id;
+// const queryString = window.location.search;
+// const urlParams = new URLSearchParams(queryString);
+// const id = urlParams.get("id");
+// const urlProd = "http://localhost:3000/api/teddies/" + id;
 
-//Fetch de l'api du produit
-fetch(urlProd)
-    //Check de la réponse du serveur
-    .then(function (result) {
-        if (result.ok) {
-            return result.json();
-        }
-    })
-    //Utilisation des fonctions qui utilise l'api
-    .then(function (produit) {
-        showProduct(produit);
-        for (const color in produit.colors) {
-            fillColor(produit, color);
-        }
-        fillCart(produit);
-    })
+function getProductId() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get("id");
+    const urlProd = "http://localhost:3000/api/teddies/" + id;
+    return urlProd;
+}
 
-    .catch(function (error) {
-        console.log(error);
-    });
+function getProductInfos(url) {
+    //Fetch de l'api du produit
+    fetch(url)
+        //Check de la réponse du serveur
+        .then(function (result) {
+            if (result.ok) {
+                return result.json();
+            }
+        })
+        //Utilisation des fonctions qui utilise l'api
+        .then(function (produit) {
+            showProduct(produit);
+            for (const color in produit.colors) {
+                fillColor(produit, color);
+            }
+            fillCart(produit);
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
 /**
  * Remplis le html avec les données du produit
@@ -54,8 +64,10 @@ function fillColor(element, index) {
     option.textContent = element.colors[index];
     option.value = element.colors[index];
 
+    const select = document.getElementById("colorSelect");
     var clone = document.importNode(template.content, true);
-    document.getElementById("colorSelect").appendChild(clone);
+
+    select.appendChild(clone);
 }
 
 function string(input) {
@@ -63,54 +75,52 @@ function string(input) {
 }
 
 function fillCart(input) {
-    const btn = document
-        .getElementById("addCart")
-        .addEventListener("click", function () {
-            const select = document.getElementById("colorSelect");
-            let parse = JSON.parse(localStorage.getItem("produits"));
+    const addToCart = document.getElementById("addCart");
 
-            let produit = {
-                prodName: input.name,
-                prodPrice: input.price,
-                prodId: input._id,
-                prodColor: document.getElementById("colorSelect").value,
-                prodQuantity: 1,
-            };
+    addToCart.addEventListener("click", function () {
+        const select = document.getElementById("colorSelect");
+        let parse = JSON.parse(localStorage.getItem("produits"));
 
-            let productArray = [];
+        let product = {
+            prodName: input.name,
+            prodPrice: input.price,
+            prodId: input._id,
+            prodColor: document.getElementById("colorSelect").value,
+            prodQuantity: 1,
+        };
 
-            if (localStorage.getItem("produits") === null) {
-                productArray.push(produit);
-                string(productArray);
-                console.log(localStorage.getItem("produits"));
-            } else {
-                productArray = parse;
-                let isPresent = false;
+        let productArray = [];
 
-                for (const index in productArray) {
-                    if (produit.prodId === productArray[index].prodId) {
-                        console.log(true + "ID");
-                        isPresent = true;
-                        if (
-                            produit.prodColor === productArray[index].prodColor
-                        ) {
-                            console.log(true + "COLOR");
-                            productArray[index].prodQuantity++;
-                            productArray[index].prodPrice += produit.prodPrice;
-                            string(productArray);
-                        } else {
-                            isPresent = false;
-                        }
+        if (localStorage.getItem("produits") === null) {
+            productArray.push(product);
+            string(productArray);
+            console.log(localStorage.getItem("produits"));
+        } else {
+            productArray = parse;
+            let isPresent = false;
+
+            for (const index in productArray) {
+                if (product.prodId === productArray[index].prodId) {
+                    console.log(true + "ID");
+                    isPresent = true;
+                    if (product.prodColor === productArray[index].prodColor) {
+                        console.log(true + "COLOR");
+                        productArray[index].prodQuantity++;
+                        productArray[index].prodPrice += product.prodPrice;
+                        string(productArray);
+                    } else {
+                        isPresent = false;
                     }
                 }
-                if (!isPresent) {
-                    productArray.push(produit);
-                    string(productArray);
-                }
             }
+            if (!isPresent) {
+                productArray.push(product);
+                string(productArray);
+            }
+        }
 
-            cartAmount();
-        });
+        cartAmount();
+    });
 }
-
+getProductInfos(getProductId());
 cartAmount();
