@@ -1,3 +1,5 @@
+const boutonConfirmationCommande = document.getElementById("orderButton");
+
 function cartAmount() {
     let cart = JSON.parse(localStorage.getItem("produits"));
     let amount = 0;
@@ -13,50 +15,50 @@ function refreshPrice(prodArray) {
     }
     totalPriceHtml.textContent = totalPrice + " €";
 }
-
-document
-    .getElementById("orderButton")
-    .addEventListener("click", function (event) {
-        if (document.getElementById("orderForm").checkValidity()) {
-            let product_id = [];
-            const cart = JSON.parse(localStorage.getItem("produits"));
-            for (const product in cart) {
-                product_id.push(cart[product].prodId);
-            }
-
-            let contact = {
-                firstName: document.getElementById("firstName").value,
-                lastName: document.getElementById("lastName").value,
-                address: document.getElementById("adress").value,
-                city: document.getElementById("city").value,
-                email: document.getElementById("email").value,
-            };
-
-            let myJson = {
-                contact: contact,
-                products: product_id,
-            };
-
-            console.log(JSON.stringify(myJson));
-
-            fetch("http://localhost:3000/api/teddies/order", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(myJson),
-            })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then((data) => {
-                    console.log(data);
-                });
-        } else {
-            console.log("Formulaire pas bon");
+boutonConfirmationCommande.addEventListener("click", function (event) {
+    if (document.getElementById("orderForm").checkValidity()) {
+        event.preventDefault();
+        let product_id = [];
+        const cart = JSON.parse(localStorage.getItem("produits"));
+        for (const product in cart) {
+            product_id.push(cart[product].prodId);
         }
-    });
+
+        let contact = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("adress").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value,
+        };
+
+        let myJson = {
+            contact: contact,
+            products: product_id,
+        };
+
+        console.log(JSON.stringify(myJson));
+
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(myJson),
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                let test = 10000;
+                document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${contact.firstName}&lname=${contact.lastName}`;
+            });
+    } else {
+        console.log("Formulaire pas bon");
+    }
+});
 
 cartAmount();
 
