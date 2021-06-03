@@ -1,13 +1,14 @@
 const boutonConfirmationCommande = document.getElementById("orderButton");
+import { cartAmount } from "./fonctionsPanier.js";
 
-function cartAmount() {
-    let cart = JSON.parse(localStorage.getItem("produits"));
-    let amount = 0;
-    for (const index in cart) {
-        amount += cart[index].prodQuantity;
-    }
-    document.getElementById("amount").textContent = amount;
-}
+// function cartAmount() {
+//     let cart = JSON.parse(localStorage.getItem("produits"));
+//     let amount = 0;
+//     for (const index in cart) {
+//         amount += cart[index].prodQuantity;
+//     }
+//     document.getElementById("amount").textContent = amount;
+// }
 function refreshPrice(prodArray) {
     totalPrice = 0;
     for (const prod in prodArray) {
@@ -51,8 +52,6 @@ boutonConfirmationCommande.addEventListener("click", function (event) {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
-                let test = 10000;
                 document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${contact.firstName}&lname=${contact.lastName}`;
             });
     } else {

@@ -7,7 +7,7 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link rel="stylesheet" href="./style.css" />
-        <script src="./js/panier.js" defer></script>
+        <script src="./js/panier.js" type="module" defer></script>
         <script
             src="https://kit.fontawesome.com/8bebfe2d5a.js"
             crossorigin="anonymous"
@@ -163,6 +163,7 @@
                             class="section__form__local__address__input"
                             pattern="^([0-9A-zÀ-ú-']\s*)+$"
                             title="Pas de caractères spéciaux hormis - et '"
+                            autocomplete="street-address"
                             required
                         />
                     </div>

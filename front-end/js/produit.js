@@ -1,3 +1,5 @@
+import { cartAmount } from "./fonctionsPanier.js";
+
 // Récupérer l'id dans la barre de recherche
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -109,15 +111,6 @@ function fillCart(input) {
 
             cartAmount();
         });
-}
-
-function cartAmount() {
-    let cart = JSON.parse(localStorage.getItem("produits"));
-    let amount = 0;
-    for (const index in cart) {
-        amount += cart[index].prodQuantity;
-    }
-    document.getElementById("amount").textContent = amount;
 }
 
 cartAmount();

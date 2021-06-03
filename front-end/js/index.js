@@ -1,3 +1,5 @@
+import { cartAmount } from "./fonctionsPanier.js";
+
 //Fetch de l'api
 fetch("http://localhost:3000/api/teddies")
     //Check de la réponse du serveur
@@ -42,15 +44,6 @@ function displayProducts(produits) {
         var clone = document.importNode(template.content, true);
         document.getElementById("prodCards").appendChild(clone);
     }
-}
-
-function cartAmount() {
-    let cart = JSON.parse(localStorage.getItem("produits"));
-    let amount = 0;
-    for (const index in cart) {
-        amount += cart[index].prodQuantity;
-    }
-    document.getElementById("amount").textContent = amount;
 }
 
 cartAmount();
