@@ -1,22 +1,29 @@
 import { cartAmount } from "./fonctionsPanier.js";
 
-//Fetch de l'api
-fetch("http://localhost:3000/api/teddies")
-    //Check de la réponse du serveur
-    .then(function (result) {
-        if (result.ok) {
-            return result.json();
-        }
-    })
-    //Utilisation des fonctions qui utilise l'api
-    .then(function (prod) {
-        // showProduit(prod);
-        displayProducts(prod);
-    })
-    //Check les erreurs possibles
-    .catch(function (error) {
-        console.log(error);
-    });
+const api = "http://localhost:3000/api/teddies";
+/**
+ * Fetch l'api pour récupéré les données des produits
+ * @param {string} apiUrl - Api url
+ */
+function useApiToShowProduct(apiUrl) {
+    //Fetch de l'api
+    fetch(apiUrl)
+        //Check de la réponse du serveur
+        .then(function (result) {
+            if (result.ok) {
+                return result.json();
+            }
+        })
+        //Utilisation des fonctions qui utilise l'api
+        .then(function (prod) {
+            // showProduit(prod);
+            displayProducts(prod);
+        })
+        //Check les erreurs possibles
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 /**
  * Gère l'affichage des produits
  * @param {object} produits - Produits
@@ -46,4 +53,5 @@ function displayProducts(produits) {
     }
 }
 
+useApiToShowProduct(api);
 cartAmount();
