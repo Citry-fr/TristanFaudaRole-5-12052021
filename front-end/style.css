@@ -240,6 +240,22 @@ body {
   align-items: center;
   margin-top: 35px;
 }
+.main__thanking span {
+  font-weight: bold;
+}
+.main__thanking__redirect {
+  border-top: 2px solid #261624;
+  border-bottom: 2px solid #261624;
+  padding: 10px;
+  text-decoration: none;
+  color: #261624;
+  border-radius: 15px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.main__thanking__redirect:hover {
+  background-color: #e1c8dc;
+}
 
 .footer {
   border-top: 2px solid #261624;
