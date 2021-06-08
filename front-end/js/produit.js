@@ -1,5 +1,9 @@
 import { cartAmount } from "./fonctionsPanier.js";
 
+/**
+ * Récupère l'id du produit dans l'url puis l'ajoute a l'url de l'api
+ * @returns {string} L'url du produit
+ */
 function getProductId() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -8,6 +12,10 @@ function getProductId() {
     return urlProd;
 }
 
+/**
+ * Fetch l'api en fonction de l'url pour affiché récupéré les élément du produit
+ * @param {string} url Url du produit
+ */
 function getProductInfos(url) {
     //Fetch de l'api du produit
     fetch(url)
@@ -51,6 +59,11 @@ function showProduct(response) {
         response.price + " €");
 }
 
+/**
+ * Utilise un les couleurs du produit pour remplir le template
+ * @param {string[]} element Tableau de couleur
+ * @param {number} index Index de l'élément
+ */
 function fillColor(element, index) {
     var template = document.querySelector("#colorTemplate");
 
@@ -63,9 +76,23 @@ function fillColor(element, index) {
 
     select.appendChild(clone);
 }
-
+/**
+ * Stock l'argument dans le localstorage en JSON
+ * @param {object[]} input Tableau d'objet de produits
+ */
 function string(input) {
     localStorage.setItem("produits", JSON.stringify(input));
+}
+
+function getProductObject(response) {
+    let productObject = {
+        prodName: response.name,
+        prodPrice: response.price,
+        prodId: response._id,
+        prodColor: document.getElementById("colorSelect").value,
+        prodQuantity: 1,
+    };
+    return productObject;
 }
 
 function fillCart(input) {
@@ -75,13 +102,7 @@ function fillCart(input) {
         const select = document.getElementById("colorSelect");
         let parse = JSON.parse(localStorage.getItem("produits"));
 
-        let product = {
-            prodName: input.name,
-            prodPrice: input.price,
-            prodId: input._id,
-            prodColor: document.getElementById("colorSelect").value,
-            prodQuantity: 1,
-        };
+        let product = getProductObject(input);
 
         let productArray = [];
 
@@ -102,6 +123,7 @@ function fillCart(input) {
                         productArray[index].prodQuantity++;
                         productArray[index].prodPrice += product.prodPrice;
                         string(productArray);
+                        break;
                     } else {
                         isPresent = false;
                     }
