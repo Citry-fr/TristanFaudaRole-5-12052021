@@ -1,97 +1,131 @@
-const boutonConfirmationCommande = document.getElementById("orderButton");
 import { cartAmount } from "./fonctionsPanier.js";
 
-// function cartAmount() {
-//     let cart = JSON.parse(localStorage.getItem("produits"));
-//     let amount = 0;
-//     for (const index in cart) {
-//         amount += cart[index].prodQuantity;
-//     }
-//     document.getElementById("amount").textContent = amount;
-// }
-function refreshPrice(prodArray) {
-    totalPrice = 0;
-    for (const prod in prodArray) {
-        totalPrice += prodArray[prod].prodPrice;
-    }
-    totalPriceHtml.textContent = totalPrice + " €";
-}
-boutonConfirmationCommande.addEventListener("click", function (event) {
-    if (document.getElementById("orderForm").checkValidity()) {
-        event.preventDefault();
-        let product_id = [];
-        const cart = JSON.parse(localStorage.getItem("produits"));
-        for (const product in cart) {
-            product_id.push(cart[product].prodId);
-        }
-
-        let contact = {
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            address: document.getElementById("adress").value,
-            city: document.getElementById("city").value,
-            email: document.getElementById("email").value,
-        };
-
-        let myJson = {
-            contact: contact,
-            products: product_id,
-        };
-
-        console.log(JSON.stringify(myJson));
-
-        fetch("http://localhost:3000/api/teddies/order", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(myJson),
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then((data) => {
-                document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${contact.firstName}&lname=${contact.lastName}`;
-            });
-    } else {
-        console.log("Formulaire pas bon");
-    }
-});
-
-cartAmount();
-
+//Stock le bouton de confirmation de commande
+const buttonOrderConfirmation = document.getElementById("orderButton");
+//Stock l'objet "produits" du localStorage
 let productArray = JSON.parse(localStorage.getItem("produits"));
+//Stock l'élément html de l'affiche du prix du panier
 let totalPriceHtml = document.getElementById("priceTotal");
-let totalPrice = 0;
 
-for (const product in productArray) {
-    useTemplate(productArray[product]);
-    totalPrice += productArray[product].prodPrice;
-}
-totalPriceHtml.textContent = totalPrice + " €";
-
+/**
+ * Remplis est utilise le template html grâce aux données des produits
+ * @param {object[]} input Tableau d'objet contenant les produits
+ */
 function useTemplate(input) {
+    //Stock le template
     var template = document.querySelector("#cartTemplate");
 
+    //Stock les "tr" et asigne les dataset
     var tr = template.content.querySelector("tr");
     tr.dataset.id = input.prodId;
     tr.dataset.color = input.prodColor;
 
+    //Stock les "td" dans un tableau puis les remplits
     var td = template.content.querySelectorAll(".main__table__body__row__cell");
     td[0].textContent = input.prodName;
     td[1].textContent = input.prodColor;
     td[3].textContent = input.prodPrice + " €";
 
+    //Stock l'input de la quantité puis assigne sa valeur
     var quant = template.content.querySelector(
         ".main__table__body__row__cell__quantity"
     );
     quant.value = input.prodQuantity;
 
+    //Clone le template rempli
     var clone = document.importNode(template.content, true);
+
+    //Insère le template rempli a l'endroit voulu
     document.getElementById("tableBody").appendChild(clone);
 }
 
+/**
+ * Acutalise le prix total du panier
+ * @param {object} prodArray - Objet Produit
+ */
+function refreshPrice(prodArray) {
+    let totalPrice = 0;
+
+    for (const product in productArray) {
+        totalPrice += productArray[product].prodPrice;
+    }
+    totalPriceHtml.textContent = totalPrice + " €";
+}
+/**
+ * Crée l'objet clientInfos qui contient les valeurs des élément du formulaire.
+ * @returns {object} - Retourne l'objet clientInfos.
+ */
+function getCientInfos() {
+    let clientInfos = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        address: document.getElementById("adress").value,
+        city: document.getElementById("city").value,
+        email: document.getElementById("email").value,
+    };
+    return clientInfos;
+}
+/**
+ * Fait une requête POST puis passe le résultat de la requête en paramètre d'url
+ * @param {object} jsonObject - Objet servant au body de la requête
+ * @param {object} clientObject - Objet contenant les infos du clients
+ */
+function sendOrder(jsonObject, clientObject) {
+    fetch("http://localhost:3000/api/teddies/order", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jsonObject),
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then((data) => {
+            document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${clientObject.firstName}&lname=${clientObject.lastName}`;
+            console.log(data);
+        });
+}
+/**
+ *
+ * @param {object} productObject Object contenant les produits dans le panier
+ * @returns {string[]} Tableau contenant les ids des produits
+ */
+function createIdArray(productObject) {
+    let product_id = [];
+    for (const product in productObject) {
+        product_id.push(productObject[product].prodId);
+    }
+    return product_id;
+}
+/**
+ * Crée l'objet qui servira de body à la requête
+ * @returns {object} Objet contenant les infos client et le tableau des ID
+ */
+function createJsonBody() {
+    let jsonBody = {
+        contact: getCientInfos(),
+        products: createIdArray(productArray),
+    };
+    return jsonBody;
+}
+
+for (const product in productArray) {
+    useTemplate(productArray[product]);
+}
+
+buttonOrderConfirmation.addEventListener("click", function (event) {
+    if (document.getElementById("orderForm").checkValidity()) {
+        event.preventDefault();
+        sendOrder(createJsonBody(), getCientInfos());
+    }
+});
+
+cartAmount();
+refreshPrice(productArray);
+
+//AddEventListener pour supprimer un produit du panier
 document
     .querySelectorAll(".main__table__body__row__cell__delete")
     .forEach((item) => {
@@ -99,8 +133,7 @@ document
             let row = item.closest("tr");
             let id = row.dataset.id;
             let color = row.dataset.color;
-            let tempArray = JSON.parse(localStorage.getItem("produits"));
-            console.log(tempArray);
+            let tempArray = productArray;
             for (const prod in tempArray) {
                 if (
                     tempArray[prod].prodId === id &&
@@ -109,17 +142,17 @@ document
                     tempArray.splice(prod, 1);
                 }
             }
-            console.log(tempArray);
             localStorage.setItem("produits", JSON.stringify(tempArray));
             location.reload();
         });
     });
 
+//AddEventListener pour changer la quantité d'un produit dans le panier
 document
     .querySelectorAll(".main__table__body__row__cell__quantity")
     .forEach((input) => {
         input.addEventListener("change", function (e) {
-            let tempArray = JSON.parse(localStorage.getItem("produits"));
+            let tempArray = productArray;
             let tempQuantity = input.value;
             let row = input.closest("tr");
             let id = row.dataset.id;
@@ -141,7 +174,6 @@ document
             }
             refreshPrice(tempArray);
             localStorage.setItem("produits", JSON.stringify(tempArray));
-            console.log(JSON.parse(localStorage.getItem("produits")));
             cartAmount();
         });
     });

@@ -1,11 +1,5 @@
 import { cartAmount } from "./fonctionsPanier.js";
 
-// Récupérer l'id dans la barre de recherche
-// const queryString = window.location.search;
-// const urlParams = new URLSearchParams(queryString);
-// const id = urlParams.get("id");
-// const urlProd = "http://localhost:3000/api/teddies/" + id;
-
 function getProductId() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
