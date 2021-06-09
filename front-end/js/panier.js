@@ -119,10 +119,12 @@ function createJsonBody() {
     return jsonBody;
 }
 
+// Utilise le template pour chaque produit présent dans "productArray"
 for (const product in productArray) {
     useTemplate(productArray[product]);
 }
 
+// AddEventListener pour confirmer et passer la commande
 buttonOrderConfirmation.addEventListener("click", function (event) {
     if (document.getElementById("orderForm").checkValidity()) {
         event.preventDefault();
