@@ -84,6 +84,11 @@ function string(input) {
     localStorage.setItem("produits", JSON.stringify(input));
 }
 
+/**
+ *
+ * @param {object} response Promise du Fetch de l'api
+ * @returns {object} Retourne un objet qui contient tout les éléments du produit.
+ */
 function getProductObject(response) {
     let productObject = {
         prodName: response.name,

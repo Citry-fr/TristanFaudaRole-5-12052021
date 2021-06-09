@@ -16,7 +16,6 @@ function useApiToShowProduct(apiUrl) {
         })
         //Utilisation des fonctions qui utilise l'api
         .then(function (prod) {
-            // showProduit(prod);
             displayProducts(prod);
         })
         //Check les erreurs possibles
