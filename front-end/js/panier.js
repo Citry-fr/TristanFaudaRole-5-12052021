@@ -7,14 +7,6 @@ let productArray = JSON.parse(localStorage.getItem("produits"));
 //Stock l'élément html de l'affiche du prix du panier
 let totalPriceHtml = document.getElementById("priceTotal");
 
-const deleteCross = document.querySelectorAll(
-    ".main__table__body__row__cell__delete"
-);
-
-const quantityInput = document.querySelectorAll(
-    ".main__table__body__row__cell__quantity"
-);
-
 /**
  * Remplis est utilise le template html grâce aux données des produits
  * @param {object[]} input Tableau d'objet contenant les produits
@@ -135,50 +127,66 @@ buttonOrderConfirmation.addEventListener("click", function (event) {
 cartAmount();
 refreshPrice(productArray);
 
+/*
+let deleteCross = document.querySelectorAll(
+    ".main__table__body__row__cell__delete"
+);
+
+let quantityInput = document.querySelectorAll(
+    ".main__table__body__row__cell__quantity"
+);
+*/
+
 //AddEventListener pour supprimer un produit du panier
-deleteCross.forEach((item) => {
-    item.addEventListener("click", function (e) {
-        let row = item.closest("tr");
-        let id = row.dataset.id;
-        let color = row.dataset.color;
-        let tempArray = productArray;
-        for (const prod in tempArray) {
-            if (
-                tempArray[prod].prodId === id &&
-                tempArray[prod].prodColor === color
-            ) {
-                tempArray.splice(prod, 1);
+document
+    .querySelectorAll(".main__table__body__row__cell__delete")
+    .forEach((item) => {
+        item.addEventListener("click", function (e) {
+            console.log("click");
+            let row = item.closest("tr");
+            let id = row.dataset.id;
+            let color = row.dataset.color;
+            let tempArray = productArray;
+            for (const prod in tempArray) {
+                if (
+                    tempArray[prod].prodId === id &&
+                    tempArray[prod].prodColor === color
+                ) {
+                    tempArray.splice(prod, 1);
+                }
             }
-        }
-        localStorage.setItem("produits", JSON.stringify(tempArray));
-        location.reload();
+            localStorage.setItem("produits", JSON.stringify(tempArray));
+            location.reload();
+        });
     });
-});
 
 //AddEventListener pour changer la quantité d'un produit dans le panier
-quantityInput.forEach((input) => {
-    input.addEventListener("change", function (e) {
-        let tempArray = productArray;
-        let tempQuantity = input.value;
-        let row = input.closest("tr");
-        let id = row.dataset.id;
-        let color = row.dataset.color;
-        for (const prod in tempArray) {
-            if (
-                tempArray[prod].prodId === id &&
-                tempArray[prod].prodColor === color
-            ) {
-                let initialPrice =
-                    tempArray[prod].prodPrice / tempArray[prod].prodQuantity;
-                console.log(initialPrice);
-                row.querySelector(".price").textContent =
-                    initialPrice * tempQuantity + " €";
-                tempArray[prod].prodPrice = initialPrice * tempQuantity;
-                tempArray[prod].prodQuantity = parseInt(tempQuantity);
+document
+    .querySelectorAll(".main__table__body__row__cell__quantity")
+    .forEach((input) => {
+        input.addEventListener("change", function (e) {
+            let tempArray = productArray;
+            let tempQuantity = input.value;
+            let row = input.closest("tr");
+            let id = row.dataset.id;
+            let color = row.dataset.color;
+            for (const prod in tempArray) {
+                if (
+                    tempArray[prod].prodId === id &&
+                    tempArray[prod].prodColor === color
+                ) {
+                    let initialPrice =
+                        tempArray[prod].prodPrice /
+                        tempArray[prod].prodQuantity;
+                    console.log(initialPrice);
+                    row.querySelector(".price").textContent =
+                        initialPrice * tempQuantity + " €";
+                    tempArray[prod].prodPrice = initialPrice * tempQuantity;
+                    tempArray[prod].prodQuantity = parseInt(tempQuantity);
+                }
             }
-        }
-        refreshPrice(tempArray);
-        localStorage.setItem("produits", JSON.stringify(tempArray));
-        cartAmount();
+            refreshPrice(tempArray);
+            localStorage.setItem("produits", JSON.stringify(tempArray));
+            cartAmount();
+        });
     });
-});

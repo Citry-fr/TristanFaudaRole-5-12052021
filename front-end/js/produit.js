@@ -105,7 +105,6 @@ function fillCart(input) {
 
     addToCart.addEventListener("click", function () {
         const select = document.getElementById("colorSelect");
-        let parse = JSON.parse(localStorage.getItem("produits"));
 
         let product = getProductObject(input);
 
@@ -116,7 +115,7 @@ function fillCart(input) {
             string(productArray);
             console.log(localStorage.getItem("produits"));
         } else {
-            productArray = parse;
+            productArray = JSON.parse(localStorage.getItem("produits"));
             let isPresent = false;
 
             for (const index in productArray) {
