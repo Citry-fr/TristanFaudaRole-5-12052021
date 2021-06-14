@@ -81,21 +81,32 @@ function getCientInfos() {
  * @param {object} clientObject - Objet contenant les infos du clients
  */
 function sendOrder(jsonObject, clientObject) {
-    fetch("http://localhost:3000/api/teddies/order", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(jsonObject),
-    })
-        .then(function (response) {
-            return response.json();
+    if (isCartEmpty()) {
+        window.alert("Votre panier est vide");
+    } else {
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(jsonObject),
         })
-        .then((data) => {
-            document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${clientObject.firstName}&lname=${clientObject.lastName}`;
-            console.log(data);
-        });
+            .then(function (response) {
+                return response.json();
+            })
+            .then((data) => {
+                document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${clientObject.firstName}&lname=${clientObject.lastName}`;
+            });
+    }
+}
+function isCartEmpty() {
+    if (localStorage.getItem("produits") === null) {
+        return true;
+    } else {
+        const myCart = JSON.parse(localStorage.getItem("produits"));
+        return myCart == 0;
+    }
 }
 /**
  *

@@ -22,9 +22,16 @@ function deleteLocalStorage() {
     localStorage.removeItem("produits");
 }
 
-//Modifie le text des éléments html en utilisant les infos du client
-htmlElement.thankingTitle.textContent = `Mr/Mme ${urlInfos.clientLastName} ${urlInfos.clientFirstName}, merci pour votre commande sur Orinoco.`;
-htmlElement.orderIdSpan.textContent = urlInfos.orderId;
-htmlElement.orderPriceSpan.textContent = urlInfos.orderPrice;
+/**
+ * //Modifie le text des éléments html en utilisant les infos du client
+ * @param {object} infos
+ * @param {object} html
+ */
+function thanking(infos, html) {
+    html.thankingTitle.textContent = `Mr/Mme ${infos.clientLastName} ${infos.clientFirstName}, merci pour votre commande sur Orinoco.`;
+    html.orderIdSpan.textContent = infos.orderId;
+    html.orderPriceSpan.textContent = infos.orderPrice;
+}
 
+thanking(urlInfos, htmlElement);
 deleteLocalStorage();
