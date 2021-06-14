@@ -16,6 +16,7 @@
         <title>Orinoco</title>
     </head>
     <body>
+        <!-- Header -->
         <header class="header">
             <img
                 class="header__logo"
@@ -66,7 +67,7 @@
                 </ul>
             </nav>
         </header>
-
+        <!-- Affichage panier -->
         <main class="main">
             <h1 class="main__title">Panier</h1>
             <table class="main__table">
@@ -96,7 +97,7 @@
                 </tfoot>
             </table>
         </main>
-
+        <!-- Affichage formulaire -->
         <section class="section">
             <form class="section__form" id="orderForm">
                 <div class="section__form__fullname">
@@ -190,7 +191,7 @@
                 </div>
             </form>
         </section>
-
+        <!-- Footer -->
         <footer class="footer">
             <div class="footer__socials">
                 <a href="#" class="footer__socials__a" title="Twitter"
@@ -208,7 +209,7 @@
                 <a href="#" class="footer__link__text">Mentions légal</a>
             </div>
         </footer>
-
+        <!-- Template panier -->
         <template id="cartTemplate">
             <tr class="main__table__body__row" data-id="" data-color="">
                 <td class="main__table__body__row__cell"></td>
@@ -232,11 +233,6 @@
                         ></i>
                     </button>
                 </td>
-            </tr>
-        </template>
-        <template id="emptyTemplate">
-            <tr id="cartEmpty">
-                <td colspan="4">Votre panier est vide.</td>
             </tr>
         </template>
     </body>
