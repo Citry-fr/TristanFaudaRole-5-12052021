@@ -108,16 +108,21 @@ function addProductToCart(input) {
     let productArray = [];
 
     if (localStorage.getItem("produits") === null) {
+        //Vérifie si l'item "produits" n'éxiste pas dans le local storage
         productArray.push(product);
         string(productArray);
     } else {
+        //Si il est présent on récupère son contenu
         productArray = JSON.parse(localStorage.getItem("produits"));
         let isPresent = false;
-
+        //On boucle tout le contenu récupéré
         for (const index in productArray) {
+            //Pour chaque élément on vérifi si l'id est le même que l'élément cliquer
             if (product.prodId === productArray[index].prodId) {
                 isPresent = true;
+                //Si l'id est le même, on vérifie si la couleur est la même
                 if (product.prodColor === productArray[index].prodColor) {
+                    //Si la couleur est la même, on augmente la quantité du produit et on sort de la boucle for
                     productArray[index].prodQuantity++;
                     productArray[index].prodPrice += product.prodPrice;
                     string(productArray);
@@ -127,13 +132,17 @@ function addProductToCart(input) {
                 }
             }
         }
+        //Si l'élément n'est pas présent, on l'ajoute
         if (!isPresent) {
             productArray.push(product);
             string(productArray);
         }
     }
 }
-
+/**
+ * Récupère le bouton "Ajouter au panier", lui ajoute un EventListener qui appelle les fonction pour l'ajout au panier.
+ * @param {object} input Promise du fetch
+ */
 function fillCart(input) {
     const addToCart = document.getElementById("addCart");
 
@@ -143,5 +152,6 @@ function fillCart(input) {
         cartAmount();
     });
 }
+
 getProductInfos(getProductId());
 cartAmount();
