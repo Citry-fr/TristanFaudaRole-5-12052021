@@ -1,7 +1,29 @@
 .footer {
     border-top: 2px solid map-get($color, secondary);
-    &__wait {
-        font-size: 1.2em;
-        text-align: center;
+    &__socials {
+        display: flex;
+        justify-content: space-around;
+        margin: 15px;
+        font-size: 2.5em;
+        &__a {
+            text-decoration: none;
+            color: map-get($color, secondary);
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            &:hover {
+                background-color: map-get($color, tertiary);
+                border-radius: 10px;
+            }
+        }
+    }
+    &__link {
+        display: flex;
+        justify-content: space-around;
+        &__text {
+            text-decoration: none;
+            color: map-get($color, secondary);
+            font-weight: bold;
+        }
     }
 }
