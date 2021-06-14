@@ -2,10 +2,20 @@ import { cartAmount } from "./fonctionsPanier.js";
 
 //Stock le bouton de confirmation de commande
 const buttonOrderConfirmation = document.getElementById("orderButton");
+
 //Stock l'objet "produits" du localStorage
 let productArray = JSON.parse(localStorage.getItem("produits"));
+
 //Stock l'élément html de l'affiche du prix du panier
 let totalPriceHtml = document.getElementById("priceTotal");
+
+let deleteCross = document.querySelectorAll(
+    ".main__table__body__row__cell__delete"
+);
+
+let quantityInput = document.querySelectorAll(
+    ".main__table__body__row__cell__quantity"
+);
 
 /**
  * Remplis est utilise le template html grâce aux données des produits
@@ -90,7 +100,7 @@ function sendOrder(jsonObject, clientObject) {
 /**
  *
  * @param {object} productObject Object contenant les produits dans le panier
- * @returns {string[]} Tableau contenant les ids des produits
+ * @returns {array} Tableau contenant les ids des produits
  */
 function createIdArray(productObject) {
     let product_id = [];
@@ -99,6 +109,7 @@ function createIdArray(productObject) {
     }
     return product_id;
 }
+
 /**
  * Crée l'objet qui servira de body à la requête
  * @returns {object} Objet contenant les infos client et le tableau des ID
@@ -127,22 +138,12 @@ buttonOrderConfirmation.addEventListener("click", function (event) {
 cartAmount();
 refreshPrice(productArray);
 
-/*
-let deleteCross = document.querySelectorAll(
-    ".main__table__body__row__cell__delete"
-);
-
-let quantityInput = document.querySelectorAll(
-    ".main__table__body__row__cell__quantity"
-);
-*/
-
 //AddEventListener pour supprimer un produit du panier
 document
     .querySelectorAll(".main__table__body__row__cell__delete")
     .forEach((item) => {
         item.addEventListener("click", function (e) {
-            console.log("click");
+            console.log(item);
             let row = item.closest("tr");
             let id = row.dataset.id;
             let color = row.dataset.color;

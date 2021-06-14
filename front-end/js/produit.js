@@ -60,7 +60,7 @@ function showProduct(response) {
 }
 
 /**
- * Utilise un les couleurs du produit pour remplir le template
+ * Utilise les couleurs du produit pour remplir le template
  * @param {string[]} element Tableau de couleur
  * @param {number} index Index de l'élément
  */
@@ -83,9 +83,8 @@ function fillColor(element, index) {
 function string(input) {
     localStorage.setItem("produits", JSON.stringify(input));
 }
-
 /**
- *
+ * Utilise les données du Fetch pour crée un objet du produit
  * @param {object} response Promise du Fetch de l'api
  * @returns {object} Retourne un objet qui contient tout les éléments du produit.
  */
@@ -99,46 +98,48 @@ function getProductObject(response) {
     };
     return productObject;
 }
+/**
+ * Ajoute l'élément au panier mais vérifie si il est déjà présent ou non
+ * @param {object} input Promise du Fetch de l'api
+ */
+function addProductToCart(input) {
+    let product = getProductObject(input);
+
+    let productArray = [];
+
+    if (localStorage.getItem("produits") === null) {
+        productArray.push(product);
+        string(productArray);
+    } else {
+        productArray = JSON.parse(localStorage.getItem("produits"));
+        let isPresent = false;
+
+        for (const index in productArray) {
+            if (product.prodId === productArray[index].prodId) {
+                isPresent = true;
+                if (product.prodColor === productArray[index].prodColor) {
+                    productArray[index].prodQuantity++;
+                    productArray[index].prodPrice += product.prodPrice;
+                    string(productArray);
+                    break;
+                } else {
+                    isPresent = false;
+                }
+            }
+        }
+        if (!isPresent) {
+            productArray.push(product);
+            string(productArray);
+        }
+    }
+}
 
 function fillCart(input) {
     const addToCart = document.getElementById("addCart");
 
     addToCart.addEventListener("click", function () {
         const select = document.getElementById("colorSelect");
-
-        let product = getProductObject(input);
-
-        let productArray = [];
-
-        if (localStorage.getItem("produits") === null) {
-            productArray.push(product);
-            string(productArray);
-            console.log(localStorage.getItem("produits"));
-        } else {
-            productArray = JSON.parse(localStorage.getItem("produits"));
-            let isPresent = false;
-
-            for (const index in productArray) {
-                if (product.prodId === productArray[index].prodId) {
-                    console.log(true + "ID");
-                    isPresent = true;
-                    if (product.prodColor === productArray[index].prodColor) {
-                        console.log(true + "COLOR");
-                        productArray[index].prodQuantity++;
-                        productArray[index].prodPrice += product.prodPrice;
-                        string(productArray);
-                        break;
-                    } else {
-                        isPresent = false;
-                    }
-                }
-            }
-            if (!isPresent) {
-                productArray.push(product);
-                string(productArray);
-            }
-        }
-
+        addProductToCart(input);
         cartAmount();
     });
 }
