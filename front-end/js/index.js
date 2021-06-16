@@ -13,6 +13,7 @@ function useApiToShowProduct(apiUrl) {
             if (result.ok) {
                 return result.json();
             }
+            throw new Error("Problème de récupération des données");
         })
         //Utilisation des fonctions qui utilise l'api
         .then(function (prod) {
@@ -20,7 +21,7 @@ function useApiToShowProduct(apiUrl) {
         })
         //Check les erreurs possibles
         .catch(function (error) {
-            console.log(error);
+            console.log(error.message);
         });
 }
 /**

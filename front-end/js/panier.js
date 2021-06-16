@@ -9,14 +9,6 @@ let productArray = JSON.parse(localStorage.getItem("produits"));
 //Stock l'élément html de l'affiche du prix du panier
 let totalPriceHtml = document.getElementById("priceTotal");
 
-let deleteCross = document.querySelectorAll(
-    ".main__table__body__row__cell__delete"
-);
-
-let quantityInput = document.querySelectorAll(
-    ".main__table__body__row__cell__quantity"
-);
-
 /**
  * Remplis est utilise le template html grâce aux données des produits
  * @param {object[]} input Tableau d'objet contenant les produits
@@ -56,8 +48,8 @@ function useTemplate(input) {
 function refreshPrice(prodArray) {
     let totalPrice = 0;
 
-    for (const product in productArray) {
-        totalPrice += productArray[product].prodPrice;
+    for (const product in prodArray) {
+        totalPrice += prodArray[product].prodPrice;
     }
     totalPriceHtml.textContent = totalPrice + " €";
 }
@@ -92,11 +84,17 @@ function sendOrder(jsonObject, clientObject) {
             },
             body: JSON.stringify(jsonObject),
         })
-            .then(function (response) {
-                return response.json();
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error("Problème d'envoi des données");
             })
             .then((data) => {
                 document.location = `./confirmation.html?orderid=${data.orderId}&price=${totalPriceHtml.textContent}&fname=${clientObject.firstName}&lname=${clientObject.lastName}`;
+            })
+            .catch((error) => {
+                console.log(error.message);
             });
     }
 }
@@ -114,10 +112,7 @@ function isCartEmpty() {
  * @returns {array} Tableau contenant les ids des produits
  */
 function createIdArray(productObject) {
-    let product_id = [];
-    for (const product in productObject) {
-        product_id.push(productObject[product].prodId);
-    }
+    let product_id = productObject.map((product) => product.prodId);
     return product_id;
 }
 
@@ -154,7 +149,6 @@ document
     .querySelectorAll(".main__table__body__row__cell__delete")
     .forEach((item) => {
         item.addEventListener("click", function (e) {
-            console.log(item);
             let row = item.closest("tr");
             let id = row.dataset.id;
             let color = row.dataset.color;
@@ -190,7 +184,6 @@ document
                     let initialPrice =
                         tempArray[prod].prodPrice /
                         tempArray[prod].prodQuantity;
-                    console.log(initialPrice);
                     row.querySelector(".price").textContent =
                         initialPrice * tempQuantity + " €";
                     tempArray[prod].prodPrice = initialPrice * tempQuantity;
