@@ -8,6 +8,11 @@
         @content;
     }
 }
+@mixin produit-resp {
+    @media all and (max-width: map-get($breakpoint, produit)) {
+        @content;
+    }
+}
 
 @mixin font {
     font-family: "Nunito", sans-serif;
