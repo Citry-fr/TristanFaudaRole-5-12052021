@@ -98,6 +98,10 @@ function sendOrder(jsonObject, clientObject) {
             });
     }
 }
+/**
+ * Vérifie si le panier est vide ou non.
+ * @returns Retourne true ou false
+ */
 function isCartEmpty() {
     if (localStorage.getItem("produits") === null) {
         return true;
