@@ -57,7 +57,7 @@ function showProduct(response) {
     prodImg.alt = "Photo de " + response.name;
     // Prix du produit
     const prodPrice = (document.getElementById("priceAmount").textContent =
-        response.price + " €");
+        response.price / 100 + " €");
 }
 
 /**

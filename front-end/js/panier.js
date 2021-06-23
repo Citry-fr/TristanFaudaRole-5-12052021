@@ -26,7 +26,7 @@ function useTemplate(input) {
     var td = template.content.querySelectorAll(".main__table__body__row__cell");
     td[0].textContent = input.prodName;
     td[1].textContent = input.prodColor;
-    td[3].textContent = input.prodPrice + " €";
+    td[3].textContent = input.prodPrice / 100 + " €";
 
     //Stock l'input de la quantité puis assigne sa valeur
     var quant = template.content.querySelector(
@@ -51,7 +51,7 @@ function refreshPrice(prodArray) {
     for (const product in prodArray) {
         totalPrice += prodArray[product].prodPrice;
     }
-    totalPriceHtml.textContent = totalPrice + " €";
+    totalPriceHtml.textContent = totalPrice / 100 + " €";
 }
 /**
  * Crée l'objet clientInfos qui contient les valeurs des élément du formulaire.
@@ -185,7 +185,7 @@ document
                         tempArray[prod].prodPrice /
                         tempArray[prod].prodQuantity;
                     row.querySelector(".price").textContent =
-                        initialPrice * tempQuantity + " €";
+                        (initialPrice * tempQuantity) / 100 + " €";
                     tempArray[prod].prodPrice = initialPrice * tempQuantity;
                     tempArray[prod].prodQuantity = parseInt(tempQuantity);
                 }
